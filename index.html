@@ -1097,10 +1097,10 @@
   }
   document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
 
-  // Priority: ?lang= in the link, then the visitor's own earlier choice; otherwise French
+  // Priority: ?lang= in the link, then the visitor's last choice, then their browser language
   let initial = new URLSearchParams(location.search).get('lang');
   if (!initial) { try { initial = localStorage.getItem('lang'); } catch (e) {} }
-  if (!initial) initial = 'fr';
+  if (!initial) initial = (navigator.languages || [navigator.language]).map(l => l.slice(0, 2)).find(l => I18N[l]) || 'fr';
   setLang(initial, false);
 </script>
 </body>
