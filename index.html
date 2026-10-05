@@ -23,7 +23,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121110'/%3E%3Ctext x='30' y='44' font-family='Arial,sans-serif' font-weight='700' font-size='34' fill='%23F3EFE6' text-anchor='middle'%3Ep%3C/text%3E%3Ccircle cx='46' cy='41' r='4' fill='%23FF5A1F'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #F3EFE6;
@@ -115,7 +115,7 @@
   h1 .line:nth-child(2) > span { animation-delay: .1s; }
   h1 .line:nth-child(3) > span { animation-delay: .2s; }
   @keyframes rise { to { transform: none; } }
-  .swap { color: var(--accent); display: inline-block; min-width: 3ch; }
+  .swap { color: var(--accent); display: inline-block; min-width: 3ch; white-space: nowrap; }
   .swap.out { animation: swapOut .35s var(--ease) forwards; }
   .swap.in { animation: swapIn .5s var(--ease) forwards; }
   @keyframes swapOut { to { opacity: 0; transform: translateY(-.25em); filter: blur(6px); } }
@@ -151,7 +151,7 @@
   .hero-copy p { font-size: 20px; color: var(--ink-soft); max-width: 30ch; margin: 0 0 28px; }
   .hero-copy p strong { color: var(--ink); font-weight: 500; }
   .ctas { display: flex; gap: 10px; flex-wrap: wrap; }
-  .hero-copy .fine { margin: 18px 0 0; font-size: 12px; color: var(--ink-soft); }
+  .hero-copy .fine { margin: 18px 0 0; font-size: 12px; color: var(--ink-soft); max-width: none; }
 
   /* ---------- Live studio (mock browser) ---------- */
   .studio { position: relative; }
@@ -176,27 +176,80 @@
   .lights i { width: 10px; height: 10px; border-radius: 50%; background: #E2DED6; }
   .url { flex: 1; font: 12px var(--mono); color: #8B867C; background: #fff; border: 1px solid #ECEAE5; border-radius: 8px; padding: 6px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-  .site {
-    --s-bg: #F6F1E7; --s-ink: #2B1D14; --s-accent: #B5542C; --s-soft: #E8DCC8; --s-font: var(--sans); --s-radius: 0px;
-    position: relative; aspect-ratio: 16 / 10.5; background: var(--s-bg); color: var(--s-ink);
-    padding: 5% 6%; display: grid; grid-template-rows: auto 1fr auto; overflow: hidden;
-    transition: background .6s var(--ease), color .6s var(--ease);
-  }
-  .site * { transition: all .6s var(--ease); }
-  .s-nav { display: flex; justify-content: space-between; align-items: center; font-size: clamp(9px, 1.1vw, 13px); }
-  .s-brand { font-family: var(--s-font); font-size: 1.6em; font-weight: 600; }
-  .s-links { display: flex; gap: 1.4em; opacity: .7; }
-  .s-body { display: grid; grid-template-columns: 1.1fr 1fr; gap: 6%; align-items: center; }
-  .s-kicker { font: 500 clamp(8px, .9vw, 11px) var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--s-accent); }
-  .s-title { font-family: var(--s-font); font-size: clamp(18px, 2.4vw, 32px); line-height: 1; margin: .35em 0 .45em; letter-spacing: -.02em; font-weight: 600; }
-  .s-text { font-size: clamp(9px, 1vw, 13px); opacity: .7; max-width: 30ch; margin: 0 0 1.2em; }
-  .s-btn { display: inline-block; font-size: clamp(9px, 1vw, 13px); font-weight: 600; background: var(--s-accent); color: var(--s-bg); padding: .8em 1.3em; border-radius: var(--s-radius); }
-  .s-art { position: relative; height: 100%; min-height: 0; }
-  .s-art .a1 { position: absolute; inset: 6% 8% 14% 0; background: var(--s-soft); border-radius: var(--s-radius); }
-  .s-art .a2 { position: absolute; width: 42%; aspect-ratio: 1; right: 0; bottom: 0; background: var(--s-accent); border-radius: var(--s-shape, 50%); }
-  .s-art .a3 { position: absolute; width: 22%; aspect-ratio: 1; left: 10%; top: 0; border: 2px solid var(--s-ink); border-radius: var(--s-radius); opacity: .5; }
-  .s-foot { display: flex; gap: 4%; }
-  .s-foot span { flex: 1; height: 6px; border-radius: 3px; background: var(--s-ink); opacity: .1; }
+  /* Each example business gets its own layout, not just its own colours */
+  .site { position: relative; aspect-ratio: 16 / 10.5; overflow: hidden; container-type: inline-size; background: #fff; }
+  .tpl { position: absolute; inset: 0; font-family: var(--sans); animation: tplIn .5s var(--ease); }
+  @keyframes tplIn { from { opacity: 0; transform: scale(.985); } }
+  .tpl p { margin: 0; }
+
+  /* Vigneron: elegant, centred, thin type */
+  .t-vigneron { background: #F7F2EA; color: #3B1F22; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 3.4cqw 5cqw; }
+  .v-nav { width: 100%; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; font-size: max(1.3cqw, 7px); letter-spacing: .2em; text-transform: uppercase; padding-bottom: 1.6cqw; border-bottom: 1px solid rgba(59,31,34,.2); }
+  .v-nav span:first-child { text-align: left; }
+  .v-nav span:last-child { text-align: right; }
+  .v-brand { font-weight: 300; font-size: 2.6cqw; letter-spacing: .35em; }
+  .v-hero { margin-top: 3.6cqw; }
+  .v-kicker { font-size: max(1.3cqw, 7px); letter-spacing: .3em; text-transform: uppercase; color: #8C2F39; }
+  .v-title { font-weight: 300; font-size: 6.4cqw; line-height: 1; letter-spacing: -.02em; margin: 1.4cqw 0; }
+  .v-rule { width: 6cqw; height: 1px; background: #8C2F39; margin: 0 auto 1.6cqw; }
+  .v-hero p { font-size: max(1.6cqw, 8px); opacity: .75; margin-bottom: 2.2cqw; }
+  .v-btn { display: inline-block; border: 1px solid #3B1F22; padding: 1cqw 2.6cqw; font-size: max(1.2cqw, 7px); letter-spacing: .22em; text-transform: uppercase; }
+  .v-bottles { margin-top: auto; display: flex; gap: 6cqw; align-items: flex-end; }
+  .v-bottle { display: flex; flex-direction: column; align-items: center; gap: 1cqw; font-size: max(1.2cqw, 7px); letter-spacing: .16em; text-transform: uppercase; }
+  .v-bottle svg { width: 3.2cqw; height: auto; }
+
+  /* Cafe: playful, rounded, heavy type */
+  .t-cafe { background: #FFE7D1; color: #3A2418; padding: 3cqw 4.5cqw; display: grid; grid-template-rows: auto 1fr; }
+  .c-nav { display: flex; justify-content: space-between; align-items: center; }
+  .c-brand { font-weight: 800; font-size: 3cqw; letter-spacing: -.04em; }
+  .c-links { display: flex; gap: 1cqw; }
+  .c-links span { background: #fff; border-radius: 99px; padding: .7cqw 1.8cqw; font-size: max(1.3cqw, 7px); font-weight: 600; }
+  .c-body { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 4cqw; }
+  .c-title { font-weight: 800; font-size: 5.8cqw; line-height: .95; letter-spacing: -.045em; }
+  .c-body p { font-size: max(1.6cqw, 8px); margin: 1.8cqw 0 2.6cqw; }
+  .c-btn { display: inline-block; background: #E4572E; color: #fff; border-radius: 99px; padding: 1.3cqw 2.8cqw; font-weight: 700; font-size: max(1.5cqw, 8px); box-shadow: 0 .6cqw 0 #3A2418; }
+  .c-art { position: relative; aspect-ratio: 1; width: 100%; max-width: 38cqw; justify-self: center; }
+  .c-blob { position: absolute; inset: 0; background: #FFB38A; border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; }
+  .c-art svg { position: absolute; width: 58%; left: 21%; top: 18%; }
+  .c-sticker { position: absolute; top: 2%; left: -4%; width: 12cqw; height: 12cqw; border-radius: 50%; background: #3A2418; color: #FFE7D1; display: grid; place-items: center; text-align: center; font-weight: 800; font-size: max(1.5cqw, 7px); line-height: 1.1; transform: rotate(-14deg); }
+  .c-price { position: absolute; bottom: 6%; right: -2%; background: #fff; border-radius: 1.4cqw; padding: 1cqw 1.8cqw; font-size: max(1.4cqw, 7px); font-weight: 600; transform: rotate(6deg); box-shadow: 0 .4cqw 1.4cqw rgba(58,36,24,.15); }
+  .c-price b { color: #E4572E; margin-left: .6cqw; }
+
+  /* Salon: dark, luxurious, golden arch */
+  .t-salon { background: #141312; color: #F3ECE2; padding: 3cqw 4.5cqw; }
+  .s2-arch { position: absolute; right: 6cqw; top: 7cqw; bottom: 0; width: 32cqw; border-radius: 16cqw 16cqw 0 0; background: linear-gradient(160deg, #E2C29E, #7A5A3C); }
+  .s2-arch::after { content: ""; position: absolute; inset: 2cqw 2cqw 0; border: 1px solid rgba(255,255,255,.55); border-bottom: 0; border-radius: 14cqw 14cqw 0 0; }
+  .s2-nav { position: relative; display: flex; justify-content: space-between; align-items: center; font-size: max(1.2cqw, 7px); letter-spacing: .2em; text-transform: uppercase; }
+  .s2-brand { color: #D9B38C; font-weight: 600; font-size: max(1.5cqw, 8px); }
+  .s2-links { display: flex; gap: 2.6cqw; color: rgba(243,236,226,.7); }
+  .s2-hero { position: absolute; left: 4.5cqw; bottom: 4.5cqw; max-width: 48cqw; }
+  .s2-kicker { font-size: max(1.2cqw, 7px); letter-spacing: .26em; text-transform: uppercase; color: #D9B38C; }
+  .s2-title { font-weight: 300; font-size: 7.4cqw; line-height: .95; letter-spacing: -.035em; margin: 1.4cqw 0 2.4cqw; }
+  .s2-list { display: flex; gap: 2.4cqw; font-size: max(1.4cqw, 7px); margin-bottom: 2.8cqw; }
+  .s2-list span { border-top: 1px solid #D9B38C; padding-top: .9cqw; min-width: 8cqw; }
+  .s2-btn { display: inline-block; border: 1px solid #D9B38C; color: #D9B38C; border-radius: 99px; padding: 1.1cqw 2.6cqw; font-size: max(1.2cqw, 7px); letter-spacing: .14em; text-transform: uppercase; }
+
+  /* Artisan: sturdy, square, uppercase */
+  .t-artisan { background: #EEF0EA; color: #1E2A22; display: grid; grid-template-rows: auto 1fr auto; }
+  .a-bar { background: #1E2A22; color: #EEF0EA; display: flex; justify-content: space-between; align-items: center; padding: 1.8cqw 4cqw; font-size: max(1.2cqw, 7px); font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+  .a-brand { display: flex; align-items: center; gap: 1cqw; font-weight: 800; font-size: 2.2cqw; letter-spacing: 0; }
+  .a-brand::before { content: ""; width: 1.8cqw; height: 1.8cqw; background: #C9A66B; }
+  .a-links { display: flex; gap: 2.6cqw; opacity: .8; }
+  .a-body { display: grid; grid-template-columns: 1.15fr 1fr; gap: 3.4cqw; padding: 3cqw 4cqw; align-items: center; }
+  .a-kicker { display: inline-block; background: #C9A66B; padding: .5cqw 1.2cqw; font-size: max(1.2cqw, 7px); font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+  .a-title { font-weight: 800; font-size: 4.4cqw; line-height: .95; text-transform: uppercase; letter-spacing: -.02em; margin: 1.6cqw 0; }
+  .a-body p { font-size: max(1.5cqw, 8px); margin-bottom: 2.2cqw; }
+  .a-btn { display: inline-block; background: #2F6B4F; color: #fff; padding: 1.3cqw 2.6cqw; font-weight: 800; font-size: max(1.3cqw, 7px); text-transform: uppercase; letter-spacing: .06em; }
+  .a-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2cqw; aspect-ratio: 1.25; }
+  .a-grid i { background: repeating-linear-gradient(100deg, #C9A66B 0 1.4cqw, #B8935A 1.4cqw 2.2cqw, #D4B37F 2.2cqw 3.6cqw); }
+  .a-grid i:nth-child(2) { background: #2F6B4F; }
+  .a-grid i:nth-child(3) { background: #1E2A22; }
+  .a-grid i:nth-child(4) { background: repeating-linear-gradient(10deg, #8E6A3E 0 1cqw, #A47C4A 1cqw 2.4cqw); }
+  .a-stats { display: flex; border-top: 2px solid #1E2A22; }
+  .a-stats div { flex: 1; padding: 1.4cqw 4cqw; display: flex; align-items: baseline; gap: 1.2cqw; }
+  .a-stats div + div { border-left: 2px solid #1E2A22; }
+  .a-stats b { font-size: 3.4cqw; font-weight: 800; letter-spacing: -.03em; }
+  .a-stats span { font-size: max(1.3cqw, 7px); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
   .studio-cap { margin-top: 12px; color: var(--ink-soft); display: flex; justify-content: space-between; gap: 12px; }
 
 
@@ -249,7 +302,8 @@
 
   /* Chat demo */
   .ai-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 30px; height: 100%; }
-  .ai-layout > div:first-child { display: flex; flex-direction: column; }
+  .ai-layout > div:first-child { display: flex; flex-direction: column; justify-content: center; }
+  .c-ai h3 { margin-top: 18px; padding-top: 0; }
   .chat {
     background: rgba(243,239,230,.06); border: 1px solid rgba(243,239,230,.12); border-radius: 18px;
     padding: 16px; display: flex; flex-direction: column; height: 400px;
@@ -473,7 +527,7 @@
     <div class="wrap">
       <div class="hero-top">
         <span class="label mono" data-i18n="hero.label">Pamela Morganti — Développeuse web, Sion</span>
-        <span class="mono" style="color:var(--ink-soft)" data-i18n="hero.tags">Sites · Applications · IA</span>
+        <span class="mono" style="color:var(--ink-soft)" data-i18n="hero.tags">Sites · Applications · Intelligence artificielle</span>
       </div>
       <div class="hero-grid">
         <div class="hero-copy reveal">
@@ -482,7 +536,7 @@
         <span class="line"><span><span class="serif swap" id="swap">travaillent</span></span></span>
         <span class="line"><span data-i18n="h1.c">pour vous.</span></span>
       </h1>
-          <p data-i18n="hero.p">Sites vitrines, boutiques en ligne, <strong>applications web</strong> et <strong>assistants IA</strong> pour les entreprises et les particuliers du Valais — livrés clé en main.</p>
+          <p data-i18n="hero.p">Sites vitrines, boutiques en ligne, <strong>applications web</strong> et <strong>assistants d'intelligence artificielle</strong> pour les entreprises et les particuliers du Valais — livrés clé en main.</p>
           <div class="ctas">
             <a href="#contact" class="btn btn-ink magnetic"><span data-i18n="hero.cta1">Parlons de votre projet</span> <span class="arr">→</span></a>
             <a href="#services" class="btn btn-ghost" data-i18n="hero.cta2">Voir les services</a>
@@ -508,14 +562,14 @@
         <article class="card c-ai reveal">
           <div class="ai-layout">
             <div>
-              <span class="num mono" data-i18n="ai.num">Sites avec IA</span>
+              <span class="num mono" data-i18n="ai.num">Sites avec intelligence artificielle</span>
               <h3 data-i18n="ai.h3">Un assistant qui répond à vos clients, <span class="serif">même à 23h.</span></h3>
               <p data-i18n="ai.p">Chatbots, prise de rendez-vous, réponses automatiques : j'intègre l'intelligence artificielle pour faire gagner du temps à votre activité.</p>
             </div>
             <div class="chat" id="chat">
               <span class="chat-label" data-i18n="chat.label">Exemple de conversation</span>
               <div class="chat-top">
-                <span class="avatar">c</span>
+                <span class="avatar">✦</span>
                 <div data-i18n="chat.top">Assistant d'une cave à vin<small>Exemple fictif</small></div>
               </div>
               <div class="msgs" id="msgs"></div>
@@ -541,7 +595,7 @@
           <span class="num mono" data-i18n="app.num">Applications web sur mesure</span>
           <div class="app-uses" aria-hidden="true" data-i18n="app.uses">
             <span>Réservations en ligne</span><span>Espace clients</span><span>Tableau de bord</span>
-            <span>Outil interne</span><span>Suivi des dépenses</span><span>Assistant IA</span>
+            <span>Outil interne</span><span>Suivi des dépenses</span><span>Assistant virtuel</span>
           </div>
           <h3 data-i18n="app.h3">Plus qu'un site : <span class="serif">un outil</span> qui travaille pour vous.</h3>
           <p data-i18n="app.p">Vous avez une idée ou une tâche qui vous prend trop de temps ? Je crée l'application web qui va avec : comptes utilisateurs, données, calculs, sur ordinateur comme sur mobile.</p>
@@ -577,22 +631,7 @@
               <div class="lights"><i></i><i></i><i></i></div>
               <div class="url" id="s-url">www.votre-cave.ch</div>
             </div>
-            <div class="site" id="site" aria-live="polite">
-              <div class="s-nav">
-                <span class="s-brand" id="s-brand">Votre cave</span>
-                <span class="s-links" data-i18n="mock.links"><span>Accueil</span><span>Services</span><span>Contact</span></span>
-              </div>
-              <div class="s-body">
-                <div>
-                  <div class="s-kicker" id="s-kicker">Domaine familial · Valais</div>
-                  <div class="s-title" id="s-title">Le goût du Rhône, bouteille après bouteille.</div>
-                  <p class="s-text" id="s-text">Dégustations sur réservation, livraison dans toute la Suisse.</p>
-                  <span class="s-btn" id="s-btn">Réserver une dégustation</span>
-                </div>
-                <div class="s-art"><div class="a1"></div><div class="a3"></div><div class="a2"></div></div>
-              </div>
-              <div class="s-foot"><span></span><span></span><span></span></div>
-            </div>
+            <div class="site" id="site" aria-live="polite"></div>
           </div>
           <div class="studio-cap mono"><span data-i18n="studio.cap1">↑ Un seul site, quatre identités</span><span data-i18n="studio.cap2">Chaque projet est unique</span></div>
         </div>
@@ -606,7 +645,7 @@
       <div class="sec-head reveal">
         <span class="label mono" data-i18n="wk.label">02 — Réalisations</span>
         <div>
-          <h2 data-i18n="wk.h2">Des projets <span class="serif">en ligne,</span> à tester</h2>
+          <h2 data-i18n="wk.h2">Mes projets <span class="serif">en ligne</span></h2>
         </div>
       </div>
 
@@ -615,9 +654,9 @@
           <div class="p-info">
             <span class="p-num serif">01</span>
             <h3>Cook Mind</h3>
-            <p data-i18n="cook.p">Un assistant de cuisine basé sur l'IA : on lui dit ce qu'il y a dans le frigo et ses préférences (végétarien, sans fruits à coque…), il propose des recettes réalisables tout de suite — dans un chat où la réponse s'écrit en direct.</p>
-            <ul class="tags mono"><li>Ruby on Rails</li><li data-i18n="tag.ai">IA · GPT-4o mini</li><li data-i18n="tag.livechat">Chat en direct</li><li class="tag-lang" data-i18n="tag.en">Interface en anglais</li></ul>
-            <p class="p-note" data-i18n="cook.note">Projet d'équipe (bootcamp Le Wagon) — j'ai développé le chat, l'intégration de l'IA et les profils.</p>
+            <p data-i18n="cook.p">Un assistant de cuisine basé sur l'intelligence artificielle : on lui dit ce qu'il y a dans le frigo et ses préférences (végétarien, sans fruits à coque…), il propose des recettes réalisables tout de suite — dans un chat où la réponse s'écrit en direct.</p>
+            <ul class="tags mono"><li>Ruby on Rails</li><li data-i18n="tag.ai">Intelligence artificielle</li><li data-i18n="tag.livechat">Chat en direct</li><li class="tag-lang" data-i18n="tag.en">Interface en anglais</li></ul>
+            <p class="p-note" data-i18n="cook.note">Projet d'équipe (bootcamp Le Wagon) — j'ai développé le chat, l'intégration de l'intelligence artificielle et les profils.</p>
             <div class="p-links">
               <a class="p-link" href="https://cook-mind-606d5c57cefd.herokuapp.com/" target="_blank" rel="noopener"><span data-i18n="wk.view">Voir le site</span> <span>↗</span></a>
               <a class="p-link p-link-soft" href="https://github.com/pamm-bot/cookMind" target="_blank" rel="noopener"><span data-i18n="wk.code">Code source</span> <span>↗</span></a>
@@ -712,7 +751,7 @@
           <summary data-i18n="st.more">Voir les compétences techniques</summary>
           <div class="stack-row"><span class="mono">Back-end</span><ul><li>Ruby on Rails</li><li>Django</li><li>Django REST Framework</li><li>PostgreSQL</li><li>API REST · OpenAPI</li></ul></div>
           <div class="stack-row"><span class="mono">Front-end</span><ul><li>JavaScript</li><li>Hotwire · Turbo · Stimulus</li><li>htmx</li><li>HTML · CSS · SCSS</li><li>Bootstrap</li><li>Chart.js</li></ul></div>
-          <div class="stack-row"><span class="mono" data-i18n="st.ai">IA</span><ul data-i18n="st.aiList"><li>Intégration de LLM</li><li>Chat en streaming</li><li>Prompts à partir des données utilisateur</li></ul></div>
+          <div class="stack-row"><span class="mono" data-i18n="st.ai">Intelligence artificielle</span><ul data-i18n="st.aiList"><li>Intégration de LLM</li><li>Chat en streaming</li><li>Prompts à partir des données utilisateur</li></ul></div>
           <div class="stack-row"><span class="mono" data-i18n="st.q">Qualité</span><ul><li>pytest · Minitest</li><li>GitHub Actions</li><li>RuboCop · black · flake8 · bandit</li><li>i18n</li><li data-i18n="st.heroku">Déploiement Heroku</li></ul></div>
           <div class="stack-row"><span class="mono" data-i18n="st.lang">Langues</span><ul data-i18n="st.langList"><li>Italien <em class="lvl">langue maternelle</em></li><li>Français <em class="lvl">courant, écrit et oral</em></li><li>Anglais <em class="lvl">bon niveau</em></li></ul></div>
         </details>
@@ -776,7 +815,7 @@
 <footer>
   <div class="wrap mono">
     <span>© <span id="year"></span> <span data-i18n="ft.1">Pamela Morganti — Sion, Valais</span></span>
-    <span data-i18n="ft.2">Sites et applications web sur mesure, avec ou sans IA</span>
+    <span data-i18n="ft.2">Sites et applications web sur mesure, avec ou sans intelligence artificielle</span>
   </div>
 </footer>
 
@@ -793,9 +832,9 @@
       'status': `Disponibile per nuovi progetti`,
       'cta.quote': `Preventivo gratuito`,
       'hero.label': `Pamela Morganti — Sviluppatrice web, Sion`,
-      'hero.tags': `Siti · App · IA`,
+      'hero.tags': `Siti · App · Intelligenza artificiale`,
       'h1.a': `Siti che`, 'h1.c': `per te.`,
-      'hero.p': `Siti vetrina, negozi online, <strong>applicazioni web</strong> e <strong>assistenti IA</strong> per aziende e privati del Vallese — chiavi in mano.`,
+      'hero.p': `Siti vetrina, negozi online, <strong>applicazioni web</strong> e <strong>assistenti di intelligenza artificiale</strong> per aziende e privati del Vallese — chiavi in mano.`,
       'hero.cta1': `Parliamo del tuo progetto`, 'hero.cta2': `Vedi i servizi`,
       'hero.fine': `Preventivo gratuito · Risposta entro 24h`,
       'studio.try': `Scegli un mestiere:`,
@@ -808,7 +847,7 @@
       'mock.links': `<span>Home</span><span>Servizi</span><span>Contatti</span>`,
       'studio.cap1': `↑ Un solo sito, quattro identità`, 'studio.cap2': `Ogni progetto è unico`,
       'sv.label': `01 — Servizi`, 'sv.h2': `Cosa <span class="serif">creo</span> per te`,
-      'ai.num': `Siti con IA`,
+      'ai.num': `Siti con intelligenza artificiale`,
       'ai.h3': `Un assistente che risponde ai tuoi clienti, <span class="serif">anche alle 23.</span>`,
       'ai.p': `Chatbot, prenotazioni, risposte automatiche: integro l'intelligenza artificiale per far risparmiare tempo alla tua attività.`,
       'chat.top': `Assistente di una cantina<small>Esempio inventato</small>`,
@@ -816,17 +855,17 @@
       'c2.p': `Un sito professionale, veloce e adatto agli smartphone per presentare la tua attività.`,
       'c3.h3': `Vendi <span class="serif">direttamente</span>`, 'c3.p': `Un negozio chiaro e semplice da gestire, senza commissioni nascoste.`,
       'app.num': `Applicazioni web su misura`,
-      'app.uses': `<span>Prenotazioni online</span><span>Area clienti</span><span>Dashboard</span><span>Strumento interno</span><span>Gestione spese</span><span>Assistente IA</span>`,
+      'app.uses': `<span>Prenotazioni online</span><span>Area clienti</span><span>Dashboard</span><span>Strumento interno</span><span>Gestione spese</span><span>Assistente virtuale</span>`,
       'app.h3': `Più di un sito: <span class="serif">uno strumento</span> che lavora per te.`,
       'app.p': `Hai un'idea o un compito che ti porta via troppo tempo? Creo l'applicazione web giusta: account utente, dati, calcoli, su computer come su smartphone.`,
       'app.more': `Guarda le mie 4 app online <span>↓</span>`,
       'c4.num': `Manutenzione e aggiornamenti`, 'c4.h3': `Resto al tuo fianco <span class="serif">anche dopo la messa online.</span>`,
       'c4.p': `Aggiornamenti, sicurezza e prestazioni nel tempo — con una persona vera a cui scrivere.`,
-      'wk.label': `02 — Progetti`, 'wk.h2': `Progetti <span class="serif">online,</span> da provare`,
+      'wk.label': `02 — Progetti`, 'wk.h2': `I miei progetti <span class="serif">online</span>`,
       'wk.view': `Vedi il sito`, 'wk.code': `Codice sorgente`, 'wk.visit': `Visita ↗`, 'wk.demo': `Account demo:`,
-      'cook.p': `Un assistente di cucina basato sull'IA: gli dici cosa c'è nel frigo e le tue preferenze (vegetariano, senza frutta a guscio…), e ti propone ricette da fare subito — in una chat dove la risposta si scrive in diretta.`,
-      'tag.ai': `IA · GPT-4o mini`, 'tag.livechat': `Chat in diretta`, 'tag.en': `Interfaccia in inglese`, 'tag.3lang': `3 lingue`,
-      'cook.note': `Progetto di gruppo (bootcamp Le Wagon) — ho sviluppato la chat, l'integrazione dell'IA e i profili.`,
+      'cook.p': `Un assistente di cucina basato sull'intelligenza artificiale: gli dici cosa c'è nel frigo e le tue preferenze (vegetariano, senza frutta a guscio…), e ti propone ricette da fare subito — in una chat dove la risposta si scrive in diretta.`,
+      'tag.ai': `Intelligenza artificiale`, 'tag.livechat': `Chat in diretta`, 'tag.en': `Interfaccia in inglese`, 'tag.3lang': `3 lingue`,
+      'cook.note': `Progetto di gruppo (bootcamp Le Wagon) — ho sviluppato la chat, l'integrazione dell'intelligenza artificiale e i profili.`,
       'eat.p': `Annoti quello che mangi, e l'app ti mostra come hai mangiato durante la settimana: quota di ultra-processati, varietà di vegetali, Nutri-Score, fibre, zuccheri e sale rispetto ai riferimenti dell'OMS. Senza contare le calorie.`,
       'watch.p': `Liste di film con titoli veri, voti a stelle e recensioni. Un mazzo «alla Tinder» suggerisce film, e una modalità «Under 12» filtra i contenuti non adatti. In francese, italiano e inglese.`,
       'split.p': `Per dividere le spese di un viaggio o di un appartamento condiviso: annoti chi ha pagato cosa, e un algoritmo calcola il minor numero di bonifici per chiudere i conti.`,
@@ -836,7 +875,7 @@
       'hr.gh': `Il mio GitHub`, 'hr.mail': `Scrivimi`, 'hr.subject': `Posizione di sviluppatrice web`,
       'pr.1': `applicazioni in produzione`, 'pr.2': `con test automatici e CI GitHub Actions`,
       'pr.3': `linguaggi back-end: Ruby e Python`, 'pr.4': `lingue parlate: italiano, francese, inglese`,
-      'st.ai': `IA`, 'st.aiList': `<li>Integrazione di LLM</li><li>Chat in streaming</li><li>Prompt costruiti dai dati utente</li>`,
+      'st.ai': `Intelligenza artificiale`, 'st.aiList': `<li>Integrazione di LLM</li><li>Chat in streaming</li><li>Prompt costruiti dai dati utente</li>`,
       'st.q': `Qualità`, 'st.heroku': `Deploy su Heroku`, 'st.lang': `Lingue`,
       'st.langList': `<li>Italiano <em class="lvl">madrelingua</em></li><li>Francese <em class="lvl">fluente, scritto e parlato</em></li><li>Inglese <em class="lvl">buon livello</em></li>`,
       'md.label': `04 — Metodo`, 'md.h2': `Semplice, chiaro, <span class="serif">senza paroloni.</span>`,
@@ -849,7 +888,7 @@
       'f.1': `per una risposta alla tua richiesta`, 'f.2': `per il preventivo, senza impegno`,
       'f.3': `sola persona di riferimento, dall'inizio alla fine`, 'f.4': `lingue: italiano, francese, inglese`,
       'ct.label': `06 — Contatti`, 'ct.h2': `Parliamo del tuo <span class="serif">progetto.</span>`,
-      'ft.1': `Pamela Morganti — Sion, Vallese`, 'ft.2': `Siti e applicazioni web su misura, con o senza IA`,
+      'ft.1': `Pamela Morganti — Sion, Vallese`, 'ft.2': `Siti e applicazioni web su misura, con o senza intelligenza artificiale`,
     },
     en: {
       'meta.title': `Pamela Morganti — Websites & web apps`,
@@ -858,9 +897,9 @@
       'status': `Available for new projects`,
       'cta.quote': `Free quote`,
       'hero.label': `Pamela Morganti — Web developer, Sion`,
-      'hero.tags': `Websites · Apps · AI`,
+      'hero.tags': `Websites · Apps · Artificial intelligence`,
       'h1.a': `Websites that`, 'h1.c': `for you.`,
-      'hero.p': `Showcase websites, online shops, <strong>web apps</strong> and <strong>AI assistants</strong> for businesses and individuals in Valais — delivered turnkey.`,
+      'hero.p': `Showcase websites, online shops, <strong>web apps</strong> and <strong>artificial intelligence assistants</strong> for businesses and individuals in Valais — delivered turnkey.`,
       'hero.cta1': `Let's talk about your project`, 'hero.cta2': `See services`,
       'hero.fine': `Free quote · Reply within 24h`,
       'studio.try': `Pick a business:`,
@@ -873,7 +912,7 @@
       'mock.links': `<span>Home</span><span>Services</span><span>Contact</span>`,
       'studio.cap1': `↑ One site, four identities`, 'studio.cap2': `Every project is unique`,
       'sv.label': `01 — Services`, 'sv.h2': `What I <span class="serif">build</span> for you`,
-      'ai.num': `AI-powered sites`,
+      'ai.num': `Sites with artificial intelligence`,
       'ai.h3': `An assistant that answers your customers, <span class="serif">even at 11 pm.</span>`,
       'ai.p': `Chatbots, bookings, automatic replies: I integrate artificial intelligence to save your business time.`,
       'chat.top': `Winery assistant<small>Fictional example</small>`,
@@ -881,17 +920,17 @@
       'c2.p': `A professional, fast, mobile-friendly site to present your business.`,
       'c3.h3': `Sell <span class="serif">directly</span>`, 'c3.p': `A clear, easy-to-manage online shop with no hidden fees.`,
       'app.num': `Custom web apps`,
-      'app.uses': `<span>Online bookings</span><span>Client portal</span><span>Dashboard</span><span>Internal tool</span><span>Expense tracking</span><span>AI assistant</span>`,
+      'app.uses': `<span>Online bookings</span><span>Client portal</span><span>Dashboard</span><span>Internal tool</span><span>Expense tracking</span><span>Virtual assistant</span>`,
       'app.h3': `More than a website: <span class="serif">a tool</span> that works for you.`,
       'app.p': `Got an idea, or a task that takes up too much of your time? I build the web app for it: user accounts, data, calculations, on desktop and on mobile.`,
       'app.more': `See my 4 live apps <span>↓</span>`,
       'c4.num': `Maintenance & updates`, 'c4.h3': `I'm still here <span class="serif">after launch.</span>`,
       'c4.p': `Updates, security and performance over time — with a real person to write to.`,
-      'wk.label': `02 — Work`, 'wk.h2': `Live projects <span class="serif">you can</span> try`,
+      'wk.label': `02 — Work`, 'wk.h2': `My projects, <span class="serif">live</span>`,
       'wk.view': `View site`, 'wk.code': `Source code`, 'wk.visit': `Visit ↗`, 'wk.demo': `Demo account:`,
-      'cook.p': `An AI cooking assistant: tell it what's in your fridge and your preferences (vegetarian, nut-free…), and it suggests recipes you can make right now — in a chat where the answer streams in live.`,
-      'tag.ai': `AI · GPT-4o mini`, 'tag.livechat': `Live chat`, 'tag.en': ``, 'tag.3lang': `3 languages`,
-      'cook.note': `Team project (Le Wagon bootcamp) — I built the chat, the AI integration and the user profiles.`,
+      'cook.p': `A cooking assistant powered by artificial intelligence: tell it what's in your fridge and your preferences (vegetarian, nut-free…), and it suggests recipes you can make right now — in a chat where the answer streams in live.`,
+      'tag.ai': `Artificial intelligence`, 'tag.livechat': `Live chat`, 'tag.en': ``, 'tag.3lang': `3 languages`,
+      'cook.note': `Team project (Le Wagon bootcamp) — I built the chat, the artificial intelligence integration and the user profiles.`,
       'eat.p': `Log what you eat and the app shows how you ate over the week: share of ultra-processed food, plant variety, Nutri-Score, fibre, sugar and salt compared with WHO guidelines. No calorie counting.`,
       'watch.p': `Movie lists with real titles, star ratings and reviews. A Tinder-style deck suggests films, and an "Under 12" mode filters out unsuitable content. In French, Italian and English.`,
       'split.p': `For splitting the costs of a trip or a shared flat: log who paid for what, and an algorithm works out the fewest transfers to settle everyone up.`,
@@ -901,7 +940,7 @@
       'hr.gh': `My GitHub`, 'hr.mail': `Email me`, 'hr.subject': `Web developer position`,
       'pr.1': `apps in production`, 'pr.2': `with automated tests and GitHub Actions CI`,
       'pr.3': `back-end languages: Ruby and Python`, 'pr.4': `spoken languages: Italian, French, English`,
-      'st.ai': `AI`, 'st.aiList': `<li>LLM integration</li><li>Streaming chat</li><li>Prompts built from user data</li>`,
+      'st.ai': `Artificial intelligence`, 'st.aiList': `<li>LLM integration</li><li>Streaming chat</li><li>Prompts built from user data</li>`,
       'st.q': `Quality`, 'st.heroku': `Heroku deployment`, 'st.lang': `Languages`,
       'st.langList': `<li>Italian <em class="lvl">native</em></li><li>French <em class="lvl">fluent, written and spoken</em></li><li>English <em class="lvl">good level</em></li>`,
       'md.label': `04 — Process`, 'md.h2': `Simple, clear, <span class="serif">no jargon.</span>`,
@@ -914,33 +953,68 @@
       'f.1': `to reply to your request`, 'f.2': `for the quote, no commitment`,
       'f.3': `single point of contact, start to finish`, 'f.4': `languages: French, Italian, English`,
       'ct.label': `06 — Contact`, 'ct.h2': `Let's talk about your <span class="serif">project.</span>`,
-      'ft.1': `Pamela Morganti — Sion, Valais`, 'ft.2': `Custom websites and web apps, with or without AI`,
+      'ft.1': `Pamela Morganti — Sion, Valais`, 'ft.2': `Custom websites and web apps, with or without artificial intelligence`,
     },
   };
   I18N.fr = { 'meta.title': document.title, 'meta.desc': document.querySelector('meta[name="description"]').content, 'hr.subject': `Poste de développeuse web` };
   document.querySelectorAll('[data-i18n]').forEach(el => { I18N.fr[el.dataset.i18n] ??= el.innerHTML; });
 
-  const HERO_WORD = { fr: 'travaillent', it: 'lavorano', en: 'work' };
-  // [brand, url, kicker, title, text, button] — generic "your business" examples, not real companies
+  const WORDS = {
+    fr: ['travaillent', 'vendent', 'répondent', 'communiquent'],
+    it: ['lavorano', 'vendono', 'rispondono', 'comunicano'],
+    en: ['work', 'sell', 'reply', 'communicate'],
+  };
+  // Example businesses are generic ("your café"), never real companies
   const THEME_TEXT = {
     fr: {
-      vigneron: ['Votre cave', 'www.votre-cave.ch', 'Domaine familial · Valais', 'Le goût du Rhône, bouteille après bouteille.', 'Dégustations sur réservation, livraison dans toute la Suisse.', 'Réserver une dégustation'],
-      cafe: ['Votre café', 'www.votre-cafe.ch', 'Brunch · Sion', 'Un café, un croissant, un sourire.', 'Ouvert 7 jours sur 7, pâtisseries maison chaque matin.', 'Voir la carte'],
-      salon: ['Votre salon', 'www.votre-salon.ch', 'Salon de coiffure · Valais', 'Prenez soin de vous. On s’occupe du reste.', 'Réservez votre rendez-vous en ligne, en 30 secondes.', 'Prendre rendez-vous'],
-      artisan: ['Votre atelier', 'www.votre-atelier.ch', 'Menuiserie · Valais', 'Du bois, du savoir-faire, et du sur-mesure.', 'Cuisines, escaliers et agencements réalisés dans notre atelier.', 'Demander un devis'],
+      vigneron: { brand: 'Votre cave', url: 'www.votre-cave.ch', nav: ['Nos vins', 'Le domaine', 'Contact'], kicker: 'Domaine familial · Valais', title: 'Le goût du Rhône', text: 'Dégustations sur réservation, livraison dans toute la Suisse.', btn: 'Réserver une dégustation', extra: ['Pinot noir', 'Fendant', 'Humagne'] },
+      cafe: { brand: 'Votre café', url: 'www.votre-cafe.ch', nav: ['Carte', 'Horaires'], kicker: '', title: 'Un café, un croissant, un sourire.', text: 'Ouvert 7 jours sur 7, pâtisseries maison chaque matin.', btn: 'Voir la carte', extra: ['Fait maison !', 'Cappuccino', 'CHF 4.50'] },
+      salon: { brand: 'Votre salon', url: 'www.votre-salon.ch', nav: ['Prestations', 'Équipe', 'Contact'], kicker: 'Coiffure · Valais', title: 'Prenez soin de vous.', text: '', btn: 'Prendre rendez-vous', extra: ['Coupe', 'Couleur', 'Soin'] },
+      artisan: { brand: 'Votre atelier', url: 'www.votre-atelier.ch', nav: ['Réalisations', 'Atelier', 'Devis'], kicker: 'Menuiserie · Valais', title: 'Du bois, du savoir-faire, du sur-mesure.', text: 'Cuisines, escaliers et agencements réalisés dans notre atelier.', btn: 'Demander un devis', extra: ['35', 'ans de métier', '500+', 'projets réalisés'] },
     },
     it: {
-      vigneron: ['La tua cantina', 'www.la-tua-cantina.ch', 'Tenuta di famiglia · Vallese', 'Il gusto del Rodano, bottiglia dopo bottiglia.', 'Degustazioni su prenotazione, consegna in tutta la Svizzera.', 'Prenota una degustazione'],
-      cafe: ['Il tuo caffè', 'www.il-tuo-caffe.ch', 'Brunch · Sion', 'Un caffè, un cornetto, un sorriso.', 'Aperto 7 giorni su 7, dolci fatti in casa ogni mattina.', 'Vedi il menù'],
-      salon: ['Il tuo salone', 'www.il-tuo-salone.ch', 'Parrucchiere · Vallese', 'Prenditi cura di te. Al resto pensiamo noi.', 'Prenota il tuo appuntamento online, in 30 secondi.', 'Prendi appuntamento'],
-      artisan: ['Il tuo laboratorio', 'www.il-tuo-laboratorio.ch', 'Falegnameria · Vallese', 'Legno, esperienza e lavori su misura.', 'Cucine, scale e arredi realizzati nel nostro laboratorio.', 'Chiedi un preventivo'],
+      vigneron: { brand: 'La tua cantina', url: 'www.la-tua-cantina.ch', nav: ['I nostri vini', 'La tenuta', 'Contatti'], kicker: 'Tenuta di famiglia · Vallese', title: 'Il gusto del Rodano', text: 'Degustazioni su prenotazione, consegna in tutta la Svizzera.', btn: 'Prenota una degustazione', extra: ['Pinot noir', 'Fendant', 'Humagne'] },
+      cafe: { brand: 'Il tuo caffè', url: 'www.il-tuo-caffe.ch', nav: ['Menù', 'Orari'], kicker: '', title: 'Un caffè, un cornetto, un sorriso.', text: 'Aperto 7 giorni su 7, dolci fatti in casa ogni mattina.', btn: 'Vedi il menù', extra: ['Fatto in casa!', 'Cappuccino', 'CHF 4.50'] },
+      salon: { brand: 'Il tuo salone', url: 'www.il-tuo-salone.ch', nav: ['Servizi', 'Team', 'Contatti'], kicker: 'Parrucchiere · Vallese', title: 'Prenditi cura di te.', text: '', btn: 'Prendi appuntamento', extra: ['Taglio', 'Colore', 'Trattamento'] },
+      artisan: { brand: 'Il tuo laboratorio', url: 'www.il-tuo-laboratorio.ch', nav: ['Lavori', 'Laboratorio', 'Preventivo'], kicker: 'Falegnameria · Vallese', title: 'Legno, esperienza e lavori su misura.', text: 'Cucine, scale e arredi realizzati nel nostro laboratorio.', btn: 'Chiedi un preventivo', extra: ['35', 'anni di mestiere', '500+', 'lavori realizzati'] },
     },
     en: {
-      vigneron: ['Your winery', 'www.your-winery.ch', 'Family estate · Valais', 'The taste of the Rhône, bottle after bottle.', 'Tastings by appointment, delivery across Switzerland.', 'Book a tasting'],
-      cafe: ['Your café', 'www.your-cafe.ch', 'Brunch · Sion', 'A coffee, a croissant, a smile.', 'Open 7 days a week, homemade pastries every morning.', 'See the menu'],
-      salon: ['Your salon', 'www.your-salon.ch', 'Hair salon · Valais', 'Take care of yourself. We’ll handle the rest.', 'Book your appointment online in 30 seconds.', 'Book now'],
-      artisan: ['Your workshop', 'www.your-workshop.ch', 'Joinery · Valais', 'Wood, craftsmanship and made-to-measure.', 'Kitchens, staircases and fittings made in our workshop.', 'Get a quote'],
+      vigneron: { brand: 'Your winery', url: 'www.your-winery.ch', nav: ['Our wines', 'The estate', 'Contact'], kicker: 'Family estate · Valais', title: 'The taste of the Rhône', text: 'Tastings by appointment, delivery across Switzerland.', btn: 'Book a tasting', extra: ['Pinot noir', 'Fendant', 'Humagne'] },
+      cafe: { brand: 'Your café', url: 'www.your-cafe.ch', nav: ['Menu', 'Opening hours'], kicker: '', title: 'A coffee, a croissant, a smile.', text: 'Open 7 days a week, homemade pastries every morning.', btn: 'See the menu', extra: ['Homemade!', 'Cappuccino', 'CHF 4.50'] },
+      salon: { brand: 'Your salon', url: 'www.your-salon.ch', nav: ['Services', 'Team', 'Contact'], kicker: 'Hair salon · Valais', title: 'Take care of yourself.', text: '', btn: 'Book an appointment', extra: ['Cut', 'Colour', 'Care'] },
+      artisan: { brand: 'Your workshop', url: 'www.your-workshop.ch', nav: ['Our work', 'Workshop', 'Quote'], kicker: 'Joinery · Valais', title: 'Wood, craftsmanship and made-to-measure.', text: 'Kitchens, staircases and fittings made in our workshop.', btn: 'Get a quote', extra: ['35', 'years of craft', '500+', 'projects done'] },
     },
+  };
+
+  const BOTTLE = '<svg viewBox="0 0 20 60" aria-hidden="true"><path d="M8 0h4v14c0 3 5 6 5 12v32a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V26c0-6 5-9 5-12z" fill="#8C2F39"/><rect x="5" y="34" width="10" height="11" fill="#F7F2EA" opacity=".9"/></svg>';
+  const CUP = '<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M18 42h56v16a28 28 0 0 1-56 0z" fill="#fff"/><path d="M74 48h6a10 10 0 0 1 0 20h-6" fill="none" stroke="#fff" stroke-width="6"/><path d="M34 16c-4 6 4 10 0 16M48 12c-4 6 4 10 0 16M62 16c-4 6 4 10 0 16" fill="none" stroke="#3A2418" stroke-width="3" stroke-linecap="round"/></svg>';
+  // One completely different page layout per business type
+  const TEMPLATES = {
+    vigneron: d => `<div class="tpl t-vigneron">
+      <div class="v-nav"><span>${d.nav[0]}</span><b class="v-brand">${d.brand}</b><span>${d.nav[1]} · ${d.nav[2]}</span></div>
+      <div class="v-hero"><div class="v-kicker">${d.kicker}</div><div class="v-title">${d.title}</div><div class="v-rule"></div><p>${d.text}</p><span class="v-btn">${d.btn}</span></div>
+      <div class="v-bottles">${d.extra.map(n => `<div class="v-bottle">${BOTTLE}<span>${n}</span></div>`).join('')}</div>
+    </div>`,
+    cafe: d => `<div class="tpl t-cafe">
+      <div class="c-nav"><b class="c-brand">${d.brand}</b><div class="c-links">${d.nav.map(n => `<span>${n}</span>`).join('')}</div></div>
+      <div class="c-body">
+        <div><div class="c-title">${d.title}</div><p>${d.text}</p><span class="c-btn">${d.btn}</span></div>
+        <div class="c-art"><div class="c-blob"></div>${CUP}<span class="c-sticker">${d.extra[0]}</span><span class="c-price">${d.extra[1]}<b>${d.extra[2]}</b></span></div>
+      </div>
+    </div>`,
+    salon: d => `<div class="tpl t-salon">
+      <div class="s2-arch"></div>
+      <div class="s2-nav"><b class="s2-brand">${d.brand}</b><div class="s2-links">${d.nav.map(n => `<span>${n}</span>`).join('')}</div></div>
+      <div class="s2-hero"><div class="s2-kicker">${d.kicker}</div><div class="s2-title">${d.title}</div><div class="s2-list">${d.extra.map(n => `<span>${n}</span>`).join('')}</div><span class="s2-btn">${d.btn}</span></div>
+    </div>`,
+    artisan: d => `<div class="tpl t-artisan">
+      <div class="a-bar"><b class="a-brand">${d.brand}</b><div class="a-links">${d.nav.map(n => `<span>${n}</span>`).join('')}</div></div>
+      <div class="a-body">
+        <div><span class="a-kicker">${d.kicker}</span><div class="a-title">${d.title}</div><p>${d.text}</p><span class="a-btn">${d.btn}</span></div>
+        <div class="a-grid"><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="a-stats"><div><b>${d.extra[0]}</b><span>${d.extra[1]}</span></div><div><b>${d.extra[2]}</b><span>${d.extra[3]}</span></div></div>
+    </div>`,
   };
   const CHAT = {
     fr: [
@@ -985,29 +1059,27 @@
   }), { threshold: 0.15 });
   document.querySelectorAll('.reveal, #steps').forEach(el => io.observe(el));
 
+  /* Rotating hero word */
   const swap = document.getElementById('swap');
+  let wi = 0;
+  if (!reduce) setInterval(() => {
+    swap.classList.remove('in'); swap.classList.add('out');
+    setTimeout(() => {
+      wi = (wi + 1) % WORDS[lang].length;
+      swap.textContent = WORDS[lang][wi];
+      swap.classList.remove('out'); swap.classList.add('in');
+    }, 350);
+  }, 2600);
 
   /* Live studio: restyle the mock site per business type */
-  const themes = {
-    vigneron: {
-      vars: { '--s-bg': '#F6F1E7', '--s-ink': '#2B1D14', '--s-accent': '#8C2F39', '--s-soft': '#E8DCC8', '--s-font': "'Inter Tight', sans-serif", '--s-radius': '0px', '--s-shape': '50%' } },
-    cafe: {
-      vars: { '--s-bg': '#FFE9D6', '--s-ink': '#3A2418', '--s-accent': '#E4572E', '--s-soft': '#FFC9A3', '--s-font': "'Inter Tight', sans-serif", '--s-radius': '28px', '--s-shape': '30% 70% 60% 40%' } },
-    salon: {
-      vars: { '--s-bg': '#171717', '--s-ink': '#F5EFE6', '--s-accent': '#D9B38C', '--s-soft': '#2A2826', '--s-font': "'Inter Tight', sans-serif", '--s-radius': '999px', '--s-shape': '999px 999px 0 0' } },
-    artisan: {
-      vars: { '--s-bg': '#E7ECE4', '--s-ink': '#1E2A22', '--s-accent': '#2F6B4F', '--s-soft': '#C9D5C5', '--s-font': "'Inter Tight', sans-serif", '--s-radius': '4px', '--s-shape': '4px' } },
-  };
   const site = document.getElementById('site');
   const chips = document.querySelectorAll('.chip');
-  const set = (id, v) => document.getElementById(id).textContent = v;
   let currentTheme = 'vigneron';
   function applyTheme(key) {
     currentTheme = key;
-    const th = themes[key], [brand, url, kicker, title, text, btn] = THEME_TEXT[lang][key];
-    Object.entries(th.vars).forEach(([k, v]) => site.style.setProperty(k, v));
-    set('s-url', url); set('s-brand', brand); set('s-kicker', kicker);
-    set('s-title', title); set('s-text', text); set('s-btn', btn);
+    const d = THEME_TEXT[lang][key];
+    site.innerHTML = TEMPLATES[key](d);
+    document.getElementById('s-url').textContent = d.url;
     chips.forEach(c => c.setAttribute('aria-pressed', c.dataset.theme === key));
   }
   // The example only changes when the visitor clicks — no automatic cycling
@@ -1083,7 +1155,7 @@
     document.querySelectorAll('[data-lang-href]').forEach(a => { a.href = a.dataset.langHref.replace('{lang}', lang); });
     document.getElementById('hire-mail').href = 'mailto:Pahelemoba@gmail.com?subject=' + encodeURIComponent(t('hr.subject'));
     document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
-    swap.textContent = HERO_WORD[lang];
+    wi = 0; swap.textContent = WORDS[lang][0];
     applyTheme(currentTheme);
     startChat();
     if (save) {
