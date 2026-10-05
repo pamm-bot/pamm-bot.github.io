@@ -201,7 +201,7 @@
   .t-vigneron { display: grid; grid-template-rows: 1fr auto; background: #F6F1E9; color: #2E1B1D; }
   .t-vigneron .hero { position: relative; color: #fff; }
   .t-vigneron .hero .ph { position: absolute; inset: 0; }
-  .t-vigneron .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,10,8,.45) 0%, rgba(20,10,8,.05) 35%, rgba(20,10,8,.7) 100%); }
+  .t-vigneron .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,10,8,.45) 0%, rgba(20,10,8,.05) 30%, rgba(20,10,8,.55) 55%, rgba(20,10,8,.85) 100%); }
   .t-vigneron .nav { position: absolute; z-index: 1; left: 4.5cqw; right: 4.5cqw; top: 2.6cqw; }
   .t-vigneron .brand { font-weight: 400; font-size: 2cqw; letter-spacing: .3em; }
   .t-vigneron .copy { position: absolute; z-index: 1; left: 4.5cqw; bottom: 4cqw; max-width: 46cqw; }
@@ -519,7 +519,6 @@
     <a href="#apropos" data-i18n="nav.about">À propos</a>
     <a href="#services" data-i18n="nav.services">Services</a>
     <a href="#realisations" data-i18n="nav.work">Réalisations</a>
-    <a href="#methode" data-i18n="nav.method">Méthode</a>
     <a href="#recrutement" data-i18n="nav.hire">Recrutement</a>
     <a href="#contact" data-i18n="nav.contact">Contact</a>
   </nav>
@@ -974,14 +973,14 @@
     en: ['work', 'sell', 'reply', 'communicate'],
   };
   // Example businesses are generic ("your café"), never real companies.
-  // Photos: Unsplash (free licence, commercial use allowed).
-  const PHOTO = (id, w = 1200) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
+  // Photos: Unsplash (free licence, commercial use allowed), stored in img/ex
+  const PHOTO = name => `img/ex/${name}.jpg`;
   const PHOTOS = {
-    vigneron: '1543418219-44e30b057fea',
-    cafe: '1565252556328-92ee4a9a0983',
-    salon: '1600948836101-f9ffda59d250',
-    artisan: '1590880795696-20c7dfadacde',
-    gallery: ['1687422810663-c316494f725a', '1683115099191-51e617fc5ff1', '1683115099860-5379ac101bce', '1678184096514-d28596346091'],
+    vigneron: 'vigneron',
+    cafe: 'cafe',
+    salon: 'salon',
+    artisan: 'artisan',
+    gallery: ['atelier', 'outils', 'decoupe', 'matieres'],
   };
   const THEME_TEXT = {
     fr: {
@@ -1004,7 +1003,7 @@
     },
   };
 
-  const ph = (id, w) => `<div class="ph"><img src="${PHOTO(id, w)}" alt="" loading="lazy"></div>`;
+  const ph = name => `<div class="ph"><img src="${PHOTO(name)}" alt="" loading="lazy"></div>`;
   // One completely different page layout per business type
   const TEMPLATES = {
     vigneron: d => `<div class="tpl t-vigneron">
@@ -1019,7 +1018,7 @@
         <div class="nav"><b class="brand">${d.brand}</b><span class="links">${d.nav.map(n => `<span>${n}</span>`).join('')}</span></div>
         <div class="body"><div class="title">${d.title}</div><p>${d.text}</p><span class="btn-x">${d.btn}</span><div class="hours">${d.hours}</div></div>
       </div>
-      <div class="right">${ph(PHOTOS.cafe, 900)}
+      <div class="right">${ph(PHOTOS.cafe)}
         <div class="menu"><small>${d.menuTitle}</small>${d.menu.map(([n, p]) => `<div>${n}<b>${p}</b></div>`).join('')}</div>
       </div>
     </div>`,
@@ -1029,15 +1028,15 @@
         <div class="body"><div class="kicker">${d.kicker}</div><div class="title">${d.title}</div>
           <div class="book"><small>${d.book}</small><div class="slots"><span>09:00</span><span>10:30</span><span>14:00</span><span>16:30</span></div></div></div>
       </div>
-      <div class="right">${ph(PHOTOS.salon, 900)}</div>
+      <div class="right">${ph(PHOTOS.salon)}</div>
     </div>`,
     artisan: d => `<div class="tpl t-artisan">
       <div class="nav"><b class="brand">${d.brand}</b><span class="links">${d.nav.map(n => `<span>${n}</span>`).join('')}</span></div>
       <div class="main">
         <div><div class="kicker">${d.kicker}</div><div class="title">${d.title}</div><p>${d.text}</p><span class="btn-x">${d.btn}</span></div>
-        ${ph(PHOTOS.artisan, 900)}
+        ${ph(PHOTOS.artisan)}
       </div>
-      <div class="gallery">${d.gallery.map((n, i) => `<div class="ph"><img src="${PHOTO(PHOTOS.gallery[i], 400)}" alt="" loading="lazy"><span>${n}</span></div>`).join('')}</div>
+      <div class="gallery">${d.gallery.map((n, i) => `<div class="ph"><img src="${PHOTO(PHOTOS.gallery[i])}" alt="" loading="lazy"><span>${n}</span></div>`).join('')}</div>
     </div>`,
   };
   const CHAT = {
