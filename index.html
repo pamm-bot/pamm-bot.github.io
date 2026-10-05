@@ -103,9 +103,7 @@
   .btn:hover .arr { transform: translateX(4px) rotate(-45deg); }
 
   /* ---------- Hero ---------- */
-  .hero { padding: 150px 0 60px; position: relative; }
-  .hero-top { margin-bottom: 22px; text-align: right; }
-  .hero-name { font-size: 18px; font-weight: 500; color: var(--ink-soft); }
+  .hero { padding: 140px 0 40px; position: relative; }
   h1 {
     margin: 0; font-weight: 600; letter-spacing: -.045em; line-height: .92;
     font-size: clamp(52px, 10.5vw, 150px);
@@ -122,9 +120,12 @@
   @keyframes swapOut { to { opacity: 0; transform: translateY(-.25em); filter: blur(6px); } }
   @keyframes swapIn { from { opacity: 0; transform: translateY(.25em); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
 
-  .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: center; margin-top: 8px; }
+  .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: center; }
   .hero-copy h1 { margin-bottom: 30px; font-size: clamp(44px, 6.4vw, 92px); }
-  .hero-photo { justify-self: end; align-self: start; margin: 12px 0 0; width: min(100%, 280px); }
+  .hero-photo { justify-self: end; margin: 0; width: min(100%, 300px); text-align: center; }
+  .hero-caption { margin-top: 18px; display: flex; flex-direction: column; gap: 2px; }
+  .hero-caption b { font-size: 18px; font-weight: 600; letter-spacing: -.01em; }
+  .hero-caption span { font-size: 15px; color: var(--ink-soft); }
   .hero-photo img {
     width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%;
     border-radius: 200px 200px 24px 24px; box-shadow: 0 0 0 8px var(--paper), 0 0 0 9px var(--line);
@@ -330,8 +331,8 @@
 
   /* Chat demo */
   .ai-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 30px; height: 100%; }
-  .ai-layout > div:first-child { display: flex; flex-direction: column; justify-content: center; }
-  .c-ai h3 { margin-top: 18px; padding-top: 0; }
+  .card.c-ai .ai-layout > div:first-child { display: flex; flex-direction: column; justify-content: center; }
+  .card.c-ai h3 { margin: 16px 0 12px; padding-top: 0; }
   .chat {
     background: rgba(243,239,230,.06); border: 1px solid rgba(243,239,230,.12); border-radius: 18px;
     padding: 16px; display: flex; flex-direction: column; height: 400px;
@@ -388,20 +389,22 @@
   .p-links { display: flex; gap: 24px; flex-wrap: wrap; }
 
   /* Hiring */
-  #recrutement { padding-top: 40px; }
+  #recrutement { padding: 110px 0 40px; }
   .hire {
     position: relative; overflow: hidden; border-radius: 36px; padding: clamp(28px, 5vw, 64px);
     background: var(--paper-2); border: 1px solid var(--line);
-    display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px 56px;
+    display: block; text-align: center;
   }
-  .hire-head h2 { margin: 20px 0 20px; }
-  .hire-head p { color: var(--ink-soft); max-width: 46ch; margin: 0 0 28px; }
-  .hire-proof { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-content: end; }
+  .hire-head { max-width: 760px; margin: 0 auto; }
+  .hire-head h2 { margin: 16px 0 20px; }
+  .hire-head .ctas { justify-content: center; }
+  .hire-head p { color: var(--ink-soft); max-width: 52ch; margin: 0 auto 28px; }
+  .hire-proof { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 48px; text-align: left; }
   .hire-proof div { background: var(--paper); border-radius: 20px; padding: 20px; border: 1px solid var(--line); }
   .hire-proof b { display: block; font-size: 44px; letter-spacing: -.04em; line-height: 1; font-weight: 600; }
   .hire-proof div:first-child b { color: var(--accent); }
   .hire-proof span { display: block; margin-top: 8px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.35; }
-  .stack { grid-column: 1 / -1; border-top: 1px solid var(--line); }
+  .stack { margin-top: 36px; border-top: 1px solid var(--line); text-align: left; }
   .stack-row { display: grid; grid-template-columns: 140px 1fr; gap: 20px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); }
   .stack-row > span { color: var(--ink-soft); }
   .stack-row ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 18px; font-weight: 500; letter-spacing: -.01em; }
@@ -491,15 +494,14 @@
   @media (max-width: 960px) {
     nav, .status { display: none; }
     .hero-grid, .sec-head, .about-grid, .ai-layout, .project, .examples { grid-template-columns: 1fr; }
-    .hero-photo { justify-self: start; width: min(100%, 280px); }
-    .hero-top { text-align: left; }
+    .hero-photo { justify-self: center; width: min(100%, 260px); }
     .examples { gap: 28px; margin-top: 60px; }
     .project { gap: 28px; }
     .project:nth-child(even) .p-info { order: 0; }
     .portrait { max-width: 280px; }
     .hero-grid { gap: 40px; }
     .c-ai, .c-2, .c-3, .c-4, .c-app { grid-column: span 6; }
-    .hire { grid-template-columns: 1fr; }
+    .hire-proof { grid-template-columns: 1fr 1fr; }
     .stack-row { grid-template-columns: 1fr; gap: 8px; }
     .steps { grid-template-columns: 1fr 1fr; }
     .step:nth-child(3) { padding-left: 0; border-left: 0; }
@@ -554,9 +556,6 @@
   <!-- Hero -->
   <section class="hero" style="padding-bottom:0">
     <div class="wrap">
-      <div class="hero-top">
-        <span class="hero-name" data-i18n="hero.label">Pamela Morganti · Développeuse web à Sion</span>
-      </div>
       <div class="hero-grid">
         <div class="hero-copy reveal">
       <h1>
@@ -571,7 +570,10 @@
           </div>
           <p class="fine mono" data-i18n="hero.fine">Devis gratuit · Réponse sous 24h</p>
         </div>
-        <figure class="hero-photo reveal"><img src="img/pamela.jpg" alt="Pamela Morganti" width="800" height="1200"></figure>
+        <figure class="hero-photo reveal">
+          <img src="img/pamela.jpg" alt="Pamela Morganti" width="800" height="1200">
+          <figcaption class="hero-caption"><b>Pamela Morganti</b><span data-i18n="hero.role">Développeuse web à Sion</span></figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -652,6 +654,7 @@
 
         <article class="card c-4 reveal">
           <span class="num mono" data-i18n="c4.num">Maintenance & mises à jour</span>
+          <svg class="icon-big" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M32 6l20 8v14c0 14-9 24-20 30C21 52 12 42 12 28V14z"/><path d="M23 32l6 6 12-13" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <h3 data-i18n="c4.h3">Je reste à vos côtés <span class="serif">après la mise en ligne.</span></h3>
           <p data-i18n="c4.p">Mises à jour, sécurité et performances dans la durée, avec une vraie personne à qui écrire.</p>
         </article>
@@ -796,7 +799,7 @@
       <div class="hire reveal">
         <div class="hire-head">
           <span class="label mono" data-i18n="hr.label">Vous recrutez ?</span>
-          <h2 data-i18n="hr.h2">Développeuse web full-stack, <span class="serif">prête à coder.</span></h2>
+          <h2 data-i18n="hr.h2">Développeuse web full‑stack, <span class="serif">prête à coder.</span></h2>
           <p data-i18n="hr.p">En plus des projets clients, je suis ouverte à un poste ou à des missions de développeuse web. Mes applications sont en ligne, testées et documentées : le code parle pour moi.</p>
           <div class="ctas">
             <a href="https://github.com/pamm-bot" target="_blank" rel="noopener" class="btn btn-ink magnetic"><span data-i18n="hr.gh">Mon GitHub</span> <span class="arr">→</span></a>
@@ -858,7 +861,7 @@
       'nav.services': `Servizi`, 'nav.work': `Progetti`, 'nav.hire': `Recruiter`, 'nav.method': `Metodo`, 'nav.about': `Chi sono`, 'nav.contact': `Contatti`,
       'status': `Disponibile per nuovi progetti`,
       'cta.quote': `Preventivo gratuito`,
-      'hero.label': `Pamela Morganti · Sviluppatrice web a Sion`,
+      'hero.role': `Sviluppatrice web a Sion`,
       'h1.a': `Siti che`, 'h1.c': `per te.`,
       'hero.p': `Siti vetrina, negozi online, <strong>applicazioni web</strong> e <strong>assistenti di intelligenza artificiale</strong> per aziende e privati del Vallese, dall'idea alla pubblicazione.`,
       'hero.cta1': `Parliamo del tuo progetto`, 'hero.cta2': `Vedi i servizi`,
@@ -896,7 +899,7 @@
       'watch.p': `Liste di film con titoli veri, voti a stelle e recensioni. Un mazzo «alla Tinder» suggerisce film, e una modalità «Under 12» filtra i contenuti non adatti. In francese, italiano e inglese.`,
       'split.p': `Per dividere le spese di un viaggio o di un appartamento condiviso: annoti chi ha pagato cosa, e un algoritmo calcola il minor numero di bonifici per chiudere i conti.`,
       'hr.label': `Stai assumendo?`,
-      'hr.h2': `Sviluppatrice web full-stack, <span class="serif">pronta a programmare.</span>`,
+      'hr.h2': `Sviluppatrice web full‑stack, <span class="serif">pronta a programmare.</span>`,
       'hr.p': `Oltre ai progetti per clienti, sono aperta a un impiego o a incarichi come sviluppatrice web. Le mie applicazioni sono online, testate e documentate: il codice parla per me.`,
       'hr.gh': `Il mio GitHub`, 'hr.mail': `Scrivimi`, 'hr.subject': `Posizione di sviluppatrice web`,
       'pr.1': `applicazioni in produzione`, 'pr.2': `con test automatici e CI GitHub Actions`,
@@ -922,7 +925,7 @@
       'nav.services': `Services`, 'nav.work': `Work`, 'nav.hire': `Hiring`, 'nav.method': `Process`, 'nav.about': `About`, 'nav.contact': `Contact`,
       'status': `Available for new projects`,
       'cta.quote': `Free quote`,
-      'hero.label': `Pamela Morganti · Web developer in Sion`,
+      'hero.role': `Web developer in Sion`,
       'h1.a': `Websites that`, 'h1.c': `for you.`,
       'hero.p': `Showcase websites, online shops, <strong>web apps</strong> and <strong>artificial intelligence assistants</strong> for businesses and individuals in Valais, from first idea to launch.`,
       'hero.cta1': `Let's talk about your project`, 'hero.cta2': `See services`,
@@ -960,7 +963,7 @@
       'watch.p': `Movie lists with real titles, star ratings and reviews. A Tinder-style deck suggests films, and an "Under 12" mode filters out unsuitable content. In French, Italian and English.`,
       'split.p': `For splitting the costs of a trip or a shared flat: log who paid for what, and an algorithm works out the fewest transfers to settle everyone up.`,
       'hr.label': `Hiring?`,
-      'hr.h2': `Full-stack web developer, <span class="serif">ready to code.</span>`,
+      'hr.h2': `Full‑stack web developer, <span class="serif">ready to code.</span>`,
       'hr.p': `Alongside client projects, I'm open to a job or freelance work as a web developer. My apps are live, tested and documented: the code speaks for itself.`,
       'hr.gh': `My GitHub`, 'hr.mail': `Email me`, 'hr.subject': `Web developer position`,
       'pr.1': `apps in production`, 'pr.2': `with automated tests and GitHub Actions CI`,
