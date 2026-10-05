@@ -133,11 +133,19 @@
   .examples { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: center; margin-top: 90px; }
   .examples h3 { font-size: clamp(28px, 3vw, 40px); line-height: 1.05; letter-spacing: -.03em; font-weight: 600; margin: 14px 0 16px; }
   .examples p { color: var(--ink-soft); margin: 0 0 24px; max-width: 40ch; }
-  .ex-badge {
-    position: absolute; top: 12px; right: 12px; z-index: 3; padding: 6px 12px; border-radius: 999px;
-    background: var(--ink); color: var(--paper); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-  }
   .browser { position: relative; }
+
+  /* Examples shown on a laptop inside their own panel, so they read as "a website on a screen" */
+  .examples { display: block; margin-top: 90px; background: var(--paper-2); border-radius: 36px; padding: clamp(28px, 5vw, 64px); }
+  .ex-head { text-align: center; max-width: 660px; margin: 0 auto 30px; }
+  .examples .ex-head p { max-width: 52ch; margin: 0 auto; }
+  .examples .studio-head { justify-content: center; margin-bottom: 30px; }
+  .laptop { max-width: 860px; margin: 0 auto; }
+  .laptop-screen { background: #1d1c1a; border-radius: 20px 20px 6px 6px; padding: 14px; }
+  .laptop .browser { box-shadow: none; border-radius: 8px; transform: none; }
+  .laptop-base { position: relative; height: 16px; margin: 0 -7%; background: linear-gradient(#d6d1c7, #aaa59b); border-radius: 0 0 22px 22px; }
+  .laptop-base::before { content: ""; position: absolute; left: 50%; top: 0; width: 16%; height: 6px; transform: translateX(-50%); background: rgba(0,0,0,.18); border-radius: 0 0 10px 10px; }
+  .examples .ex-caption { text-align: center; max-width: none; margin: 22px 0 0; color: var(--ink-soft); font-size: 14px; }
   .chat-label { align-self: flex-start; margin-bottom: 10px; padding: 5px 10px; border-radius: 999px; background: rgba(243,239,230,.12); color: rgba(243,239,230,.8); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
   .c-4 .serif { color: var(--accent); }
 
@@ -250,7 +258,6 @@
   .a-stats div + div { border-left: 2px solid #1E2A22; }
   .a-stats b { font-size: 3.4cqw; font-weight: 800; letter-spacing: -.03em; }
   .a-stats span { font-size: max(1.3cqw, 7px); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
-  .studio-cap { margin-top: 12px; color: var(--ink-soft); display: flex; justify-content: space-between; gap: 12px; }
 
 
   /* ---------- Sections ---------- */
@@ -489,7 +496,6 @@
     .head-right { gap: 10px; }
     .head-right .btn { padding: 11px 14px; font-size: 13px; }
     .head-right .btn .arr { display: none; }
-    .studio-cap { flex-direction: column; gap: 4px; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
@@ -610,14 +616,13 @@
       </div>
 
       <div class="examples reveal" id="exemples">
-        <div>
+        <div class="ex-head">
           <span class="num mono" data-i18n="ex.kicker">Exemple</span>
-          <h3 data-i18n="ex.h3">Votre site, <span class="serif">à votre image</span></h3>
-          <p data-i18n="ex.p">Pour vous donner une idée : choisissez un métier et voyez comment le même site change de couleurs et de style selon l'activité. Les entreprises affichées sont fictives.</p>
+          <h3 data-i18n="ex.h3">À quoi pourrait ressembler <span class="serif">votre site</span> ?</h3>
+          <p data-i18n="ex.p">Choisissez un métier : vous verrez comment le même site peut prendre un style complètement différent selon l'activité.</p>
         </div>
         <div class="studio" id="studio">
           <div class="studio-head">
-            <span class="mono" style="color:var(--ink-soft)" data-i18n="studio.try">Choisissez un métier :</span>
             <div class="chips" role="group">
               <button class="chip" data-theme="vigneron" aria-pressed="true" data-i18n="chip.vigneron">Vigneron</button>
               <button class="chip" data-theme="cafe" aria-pressed="false" data-i18n="chip.cafe">Café</button>
@@ -625,15 +630,19 @@
               <button class="chip" data-theme="artisan" aria-pressed="false" data-i18n="chip.artisan">Artisan</button>
             </div>
           </div>
-          <div class="browser" id="browser">
-            <span class="ex-badge" data-i18n="ex.badge">Exemple</span>
-            <div class="bar">
-              <div class="lights"><i></i><i></i><i></i></div>
-              <div class="url" id="s-url">www.votre-cave.ch</div>
+          <div class="laptop">
+            <div class="laptop-screen">
+              <div class="browser" id="browser">
+                <div class="bar">
+                  <div class="lights"><i></i><i></i><i></i></div>
+                  <div class="url" id="s-url">www.votre-cave.ch</div>
+                </div>
+                <div class="site" id="site" aria-live="polite"></div>
+              </div>
             </div>
-            <div class="site" id="site" aria-live="polite"></div>
+            <div class="laptop-base"></div>
           </div>
-          <div class="studio-cap mono"><span data-i18n="studio.cap1">↑ Un seul site, quatre identités</span><span data-i18n="studio.cap2">Chaque projet est unique</span></div>
+          <p class="ex-caption" data-i18n="ex.caption">Maquette d'exemple : l'entreprise et les textes sont inventés.</p>
         </div>
       </div>
     </div>
@@ -838,14 +847,14 @@
       'hero.cta1': `Parliamo del tuo progetto`, 'hero.cta2': `Vedi i servizi`,
       'hero.fine': `Preventivo gratuito · Risposta entro 24h`,
       'studio.try': `Scegli un mestiere:`,
-      'ex.kicker': `Esempio`, 'ex.badge': `Esempio`,
-      'ex.h3': `Il tuo sito, <span class="serif">a tua immagine</span>`,
-      'ex.p': `Per darti un'idea: scegli un mestiere e guarda come lo stesso sito cambia colori e stile in base all'attività. Le aziende mostrate sono inventate.`,
+      'ex.kicker': `Esempio`,
+      'ex.h3': `Come potrebbe essere <span class="serif">il tuo sito</span>?`,
+      'ex.p': `Scegli un mestiere: vedrai come lo stesso sito può avere uno stile completamente diverso in base all'attività.`,
+      'ex.caption': `Esempio di prototipo: l'azienda e i testi sono inventati.`,
       'chat.label': `Esempio di conversazione`,
       'st.more': `Vedi le competenze tecniche`,
       'chip.vigneron': `Viticoltore`, 'chip.cafe': `Caffè`, 'chip.salon': `Parrucchiere`, 'chip.artisan': `Artigiano`,
       'mock.links': `<span>Home</span><span>Servizi</span><span>Contatti</span>`,
-      'studio.cap1': `↑ Un solo sito, quattro identità`, 'studio.cap2': `Ogni progetto è unico`,
       'sv.label': `01. Servizi`, 'sv.h2': `Cosa <span class="serif">creo</span> per te`,
       'ai.num': `Siti con intelligenza artificiale`,
       'ai.h3': `Un assistente che risponde ai tuoi clienti, <span class="serif">anche alle 23.</span>`,
@@ -903,14 +912,14 @@
       'hero.cta1': `Let's talk about your project`, 'hero.cta2': `See services`,
       'hero.fine': `Free quote · Reply within 24h`,
       'studio.try': `Pick a business:`,
-      'ex.kicker': `Example`, 'ex.badge': `Example`,
-      'ex.h3': `Your website, <span class="serif">your identity</span>`,
-      'ex.p': `To give you an idea: pick a business and see how the same website changes colours and style to match it. The businesses shown are made up.`,
+      'ex.kicker': `Example`,
+      'ex.h3': `What could <span class="serif">your website</span> look like?`,
+      'ex.p': `Pick a business: you'll see how the same website can take on a completely different style depending on the activity.`,
+      'ex.caption': `Sample mockup: the business and the texts are made up.`,
       'chat.label': `Sample conversation`,
       'st.more': `See technical skills`,
       'chip.vigneron': `Winemaker`, 'chip.cafe': `Café`, 'chip.salon': `Salon`, 'chip.artisan': `Craftsman`,
       'mock.links': `<span>Home</span><span>Services</span><span>Contact</span>`,
-      'studio.cap1': `↑ One site, four identities`, 'studio.cap2': `Every project is unique`,
       'sv.label': `01. Services`, 'sv.h2': `What I <span class="serif">build</span> for you`,
       'ai.num': `Sites with artificial intelligence`,
       'ai.h3': `An assistant that answers your customers, <span class="serif">even at 11 pm.</span>`,
@@ -1084,18 +1093,6 @@
   }
   // The example only changes when the visitor clicks, no automatic cycling
   chips.forEach(c => c.addEventListener('click', () => applyTheme(c.dataset.theme)));
-
-  /* Browser tilt */
-  const browser = document.getElementById('browser');
-  const studio = document.getElementById('studio');
-  if (!reduce && matchMedia('(hover: hover)').matches) {
-    studio.addEventListener('mousemove', e => {
-      const r = studio.getBoundingClientRect();
-      browser.style.setProperty('--ry', ((e.clientX - r.left) / r.width - .5) * 6 + 'deg');
-      browser.style.setProperty('--rx', -((e.clientY - r.top) / r.height - .5) * 6 + 'deg');
-    });
-    studio.addEventListener('mouseleave', () => { browser.style.setProperty('--rx', '0deg'); browser.style.setProperty('--ry', '0deg'); });
-  }
 
   /* Card spotlight */
   document.querySelectorAll('.card').forEach(card => card.addEventListener('mousemove', e => {
