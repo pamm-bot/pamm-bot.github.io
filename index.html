@@ -51,7 +51,7 @@
   ::selection { background: var(--accent); color: var(--accent-ink); }
 
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-  .mono { font-size: 12.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+  .mono { font-size: 14px; font-weight: 600; letter-spacing: 0; }
   .serif { color: var(--accent); }
   .label { display: inline-flex; align-items: center; gap: 10px; color: var(--ink-soft); }
   .label::before { content: none; }
@@ -147,7 +147,7 @@
   .laptop-base { position: relative; height: 16px; margin: 0 -7%; background: linear-gradient(#d6d1c7, #aaa59b); border-radius: 0 0 22px 22px; }
   .laptop-base::before { content: ""; position: absolute; left: 50%; top: 0; width: 16%; height: 6px; transform: translateX(-50%); background: rgba(0,0,0,.18); border-radius: 0 0 10px 10px; }
   .examples .ex-caption { text-align: center; max-width: none; margin: 22px 0 0; color: var(--ink-soft); font-size: 14px; }
-  .chat-label { align-self: flex-start; margin-bottom: 10px; padding: 5px 10px; border-radius: 999px; background: rgba(243,239,230,.12); color: rgba(243,239,230,.8); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .chat-label { align-self: flex-start; margin-bottom: 10px; padding: 5px 10px; border-radius: 999px; background: rgba(243,239,230,.12); color: rgba(243,239,230,.8); font-size: 11px; font-weight: 700; letter-spacing: 0; }
   .c-4 .serif { color: var(--accent); }
 
   /* Collapsible tech stack */
@@ -190,75 +190,95 @@
   .tpl { position: absolute; inset: 0; font-family: var(--sans); animation: tplIn .5s var(--ease); }
   @keyframes tplIn { from { opacity: 0; transform: scale(.985); } }
   .tpl p { margin: 0; }
+  .tpl svg { display: block; }
 
-  /* Vigneron: elegant, centred, thin type */
-  .t-vigneron { background: #F7F2EA; color: #3B1F22; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 3.4cqw 5cqw; }
-  .v-nav { width: 100%; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; font-size: max(1.3cqw, 7px); letter-spacing: .2em; text-transform: uppercase; padding-bottom: 1.6cqw; border-bottom: 1px solid rgba(59,31,34,.2); }
-  .v-nav span:first-child { text-align: left; }
+  /* Vigneron: elegant, landscape photo, wine list */
+  .t-vigneron { background: #F7F2EA; color: #3B1F22; display: flex; flex-direction: column; padding: 2.6cqw 4.5cqw 2.4cqw; }
+  .v-nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; font-size: max(1.3cqw, 7px); letter-spacing: .06em; padding-bottom: 1.4cqw; border-bottom: 1px solid rgba(59,31,34,.18); }
   .v-nav span:last-child { text-align: right; }
-  .v-brand { font-weight: 300; font-size: 2.6cqw; letter-spacing: .35em; }
-  .v-hero { margin-top: 3.6cqw; }
-  .v-kicker { font-size: max(1.3cqw, 7px); letter-spacing: .3em; text-transform: uppercase; color: #8C2F39; }
-  .v-title { font-weight: 300; font-size: 6.4cqw; line-height: 1; letter-spacing: -.02em; margin: 1.4cqw 0; }
-  .v-rule { width: 6cqw; height: 1px; background: #8C2F39; margin: 0 auto 1.6cqw; }
-  .v-hero p { font-size: max(1.6cqw, 8px); opacity: .75; margin-bottom: 2.2cqw; }
-  .v-btn { display: inline-block; border: 1px solid #3B1F22; padding: 1cqw 2.6cqw; font-size: max(1.2cqw, 7px); letter-spacing: .22em; text-transform: uppercase; }
-  .v-bottles { margin-top: auto; display: flex; gap: 6cqw; align-items: flex-end; }
-  .v-bottle { display: flex; flex-direction: column; align-items: center; gap: 1cqw; font-size: max(1.2cqw, 7px); letter-spacing: .16em; text-transform: uppercase; }
-  .v-bottle svg { width: 3.2cqw; height: auto; }
+  .v-brand { font-weight: 300; font-size: 2.4cqw; letter-spacing: .28em; }
+  .v-main { flex: 1; display: grid; grid-template-columns: 1fr 1.1fr; gap: 4cqw; align-items: center; padding: 2.6cqw 0; }
+  .v-kicker { font-size: max(1.3cqw, 7px); letter-spacing: .12em; color: #8C2F39; font-weight: 500; }
+  .v-title { font-weight: 300; font-size: 5.2cqw; line-height: 1.02; letter-spacing: -.02em; margin: 1.2cqw 0; }
+  .v-rule { width: 5cqw; height: 1px; background: #8C2F39; margin-bottom: 1.4cqw; }
+  .v-copy p { font-size: max(1.5cqw, 8px); opacity: .75; margin-bottom: 2.2cqw; max-width: 32ch; }
+  .v-btn { display: inline-block; background: #8C2F39; color: #F7F2EA; padding: 1.1cqw 2.4cqw; font-size: max(1.3cqw, 7px); letter-spacing: .06em; }
+  .v-photo { height: 100%; max-height: 30cqw; border-radius: 16cqw 16cqw 1cqw 1cqw; overflow: hidden; }
+  .v-photo svg { width: 100%; height: 100%; }
+  .v-wines { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(59,31,34,.18); padding-top: 1.6cqw; }
+  .v-wine { display: flex; align-items: center; gap: 1.4cqw; }
+  .v-wine + .v-wine { border-left: 1px solid rgba(59,31,34,.18); padding-left: 2.4cqw; }
+  .v-wine svg { width: 1.8cqw; height: auto; flex: none; }
+  .v-wine b { display: block; font-weight: 500; font-size: max(1.4cqw, 7px); }
+  .v-wine span { font-size: max(1.2cqw, 7px); color: #8C2F39; }
 
-  /* Cafe: playful, rounded, heavy type */
-  .t-cafe { background: #FFE7D1; color: #3A2418; padding: 3cqw 4.5cqw; display: grid; grid-template-rows: auto 1fr; }
-  .c-nav { display: flex; justify-content: space-between; align-items: center; }
-  .c-brand { font-weight: 800; font-size: 3cqw; letter-spacing: -.04em; }
+  /* Cafe: playful awning, cup and croissant, little menu */
+  .t-cafe { background: #FFE7D1; color: #3A2418; display: flex; flex-direction: column; }
+  .c-awning { position: relative; height: 3cqw; flex: none; background: repeating-linear-gradient(90deg, #E4572E 0 4cqw, #FFF6EC 4cqw 8cqw); }
+  .c-awning::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 2cqw;
+    background: radial-gradient(circle at 50% 0, #E4572E 2cqw, transparent 2.05cqw) 0 0 / 8cqw 2cqw repeat-x,
+                radial-gradient(circle at 50% 0, #FFF6EC 2cqw, transparent 2.05cqw) 4cqw 0 / 8cqw 2cqw repeat-x; }
+  .c-nav { display: flex; justify-content: space-between; align-items: center; padding: 3.4cqw 4.5cqw 0; }
+  .c-brand { font-weight: 800; font-size: 2.8cqw; letter-spacing: -.04em; }
   .c-links { display: flex; gap: 1cqw; }
   .c-links span { background: #fff; border-radius: 99px; padding: .7cqw 1.8cqw; font-size: max(1.3cqw, 7px); font-weight: 600; }
-  .c-body { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 4cqw; }
-  .c-title { font-weight: 800; font-size: 5.8cqw; line-height: .95; letter-spacing: -.045em; }
-  .c-body p { font-size: max(1.6cqw, 8px); margin: 1.8cqw 0 2.6cqw; }
-  .c-btn { display: inline-block; background: #E4572E; color: #fff; border-radius: 99px; padding: 1.3cqw 2.8cqw; font-weight: 700; font-size: max(1.5cqw, 8px); box-shadow: 0 .6cqw 0 #3A2418; }
-  .c-art { position: relative; aspect-ratio: 1; width: 100%; max-width: 38cqw; justify-self: center; }
-  .c-blob { position: absolute; inset: 0; background: #FFB38A; border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; }
-  .c-art svg { position: absolute; width: 58%; left: 21%; top: 18%; }
-  .c-sticker { position: absolute; top: 2%; left: -4%; width: 12cqw; height: 12cqw; border-radius: 50%; background: #3A2418; color: #FFE7D1; display: grid; place-items: center; text-align: center; font-weight: 800; font-size: max(1.5cqw, 7px); line-height: 1.1; transform: rotate(-14deg); }
-  .c-price { position: absolute; bottom: 6%; right: -2%; background: #fff; border-radius: 1.4cqw; padding: 1cqw 1.8cqw; font-size: max(1.4cqw, 7px); font-weight: 600; transform: rotate(6deg); box-shadow: 0 .4cqw 1.4cqw rgba(58,36,24,.15); }
-  .c-price b { color: #E4572E; margin-left: .6cqw; }
+  .c-body { flex: 1; display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 3cqw; padding: 0 4.5cqw; }
+  .c-title { font-weight: 800; font-size: 5cqw; line-height: .98; letter-spacing: -.045em; }
+  .c-body p { font-size: max(1.5cqw, 8px); margin: 1.6cqw 0 2.2cqw; }
+  .c-btn { display: inline-block; background: #E4572E; color: #fff; border-radius: 99px; padding: 1.2cqw 2.6cqw; font-weight: 700; font-size: max(1.4cqw, 8px); box-shadow: 0 .5cqw 0 #3A2418; }
+  .c-art { position: relative; height: 30cqw; }
+  .c-blob { position: absolute; inset: 4% 6%; background: #FFB38A; border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; }
+  .c-cup { position: absolute; width: 46%; left: 14%; top: 18%; }
+  .c-croissant { position: absolute; width: 40%; right: 2%; bottom: 12%; transform: rotate(-10deg); }
+  .c-sticker { position: absolute; top: 0; right: 4%; width: 10cqw; height: 10cqw; border-radius: 50%; background: #3A2418; color: #FFE7D1; display: grid; place-items: center; text-align: center; font-weight: 800; font-size: max(1.3cqw, 7px); line-height: 1.1; transform: rotate(12deg); }
+  .c-menu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6cqw; padding: 0 4.5cqw 2.6cqw; }
+  .c-menu div { background: #fff; border-radius: 1.4cqw; padding: 1.2cqw 1.6cqw; display: flex; justify-content: space-between; align-items: baseline; font-size: max(1.3cqw, 7px); font-weight: 600; }
+  .c-menu b { color: #E4572E; }
 
-  /* Salon: dark, luxurious, golden arch */
+  /* Salon: dark, portrait in a golden arch, booking slots */
   .t-salon { background: #141312; color: #F3ECE2; padding: 3cqw 4.5cqw; }
-  .s2-arch { position: absolute; right: 6cqw; top: 7cqw; bottom: 0; width: 32cqw; border-radius: 16cqw 16cqw 0 0; background: linear-gradient(160deg, #E2C29E, #7A5A3C); }
-  .s2-arch::after { content: ""; position: absolute; inset: 2cqw 2cqw 0; border: 1px solid rgba(255,255,255,.55); border-bottom: 0; border-radius: 14cqw 14cqw 0 0; }
-  .s2-nav { position: relative; display: flex; justify-content: space-between; align-items: center; font-size: max(1.2cqw, 7px); letter-spacing: .2em; text-transform: uppercase; }
-  .s2-brand { color: #D9B38C; font-weight: 600; font-size: max(1.5cqw, 8px); }
+  .s2-arch { position: absolute; right: 6cqw; top: 7cqw; bottom: 0; width: 30cqw; border-radius: 15cqw 15cqw 0 0; overflow: hidden; background: linear-gradient(165deg, #EBCDA9, #8A6644); }
+  .s2-arch svg { position: absolute; left: 18%; top: 16%; width: 64%; height: 72%; }
+  .s2-arch::after { content: ""; position: absolute; inset: 1.6cqw 1.6cqw 0; border: 1px solid rgba(255,255,255,.5); border-bottom: 0; border-radius: 13.4cqw 13.4cqw 0 0; }
+  .s2-nav { position: relative; display: flex; justify-content: space-between; align-items: center; font-size: max(1.3cqw, 7px); }
+  .s2-brand { color: #D9B38C; font-weight: 600; font-size: max(1.8cqw, 8px); letter-spacing: .02em; }
   .s2-links { display: flex; gap: 2.6cqw; color: rgba(243,236,226,.7); }
-  .s2-hero { position: absolute; left: 4.5cqw; bottom: 4.5cqw; max-width: 48cqw; }
-  .s2-kicker { font-size: max(1.2cqw, 7px); letter-spacing: .26em; text-transform: uppercase; color: #D9B38C; }
-  .s2-title { font-weight: 300; font-size: 7.4cqw; line-height: .95; letter-spacing: -.035em; margin: 1.4cqw 0 2.4cqw; }
-  .s2-list { display: flex; gap: 2.4cqw; font-size: max(1.4cqw, 7px); margin-bottom: 2.8cqw; }
+  .s2-hero { position: absolute; left: 4.5cqw; top: 13cqw; max-width: 42cqw; }
+  .s2-kicker { font-size: max(1.3cqw, 7px); letter-spacing: .08em; color: #D9B38C; }
+  .s2-title { font-weight: 300; font-size: 6.8cqw; line-height: .98; letter-spacing: -.035em; margin: 1.4cqw 0 2.2cqw; }
+  .s2-list { display: flex; gap: 2.4cqw; font-size: max(1.4cqw, 7px); }
   .s2-list span { border-top: 1px solid #D9B38C; padding-top: .9cqw; min-width: 8cqw; }
-  .s2-btn { display: inline-block; border: 1px solid #D9B38C; color: #D9B38C; border-radius: 99px; padding: 1.1cqw 2.6cqw; font-size: max(1.2cqw, 7px); letter-spacing: .14em; text-transform: uppercase; }
+  .s2-book { position: absolute; left: 4.5cqw; bottom: 4cqw; width: 44cqw; background: rgba(243,236,226,.06); border: 1px solid rgba(217,179,140,.45); border-radius: 1.6cqw; padding: 1.6cqw 2cqw; }
+  .s2-book small { display: block; font-size: max(1.2cqw, 7px); color: rgba(243,236,226,.7); margin-bottom: 1cqw; }
+  .s2-slots { display: flex; gap: 1cqw; }
+  .s2-slots span { border: 1px solid rgba(217,179,140,.6); border-radius: 99px; padding: .6cqw 1.4cqw; font-size: max(1.2cqw, 7px); }
+  .s2-slots span:first-child { background: #D9B38C; color: #141312; border-color: #D9B38C; font-weight: 600; }
 
-  /* Artisan: sturdy, square, uppercase */
+  /* Artisan: sturdy layout, gallery of work, key numbers */
   .t-artisan { background: #EEF0EA; color: #1E2A22; display: grid; grid-template-rows: auto 1fr auto; }
-  .a-bar { background: #1E2A22; color: #EEF0EA; display: flex; justify-content: space-between; align-items: center; padding: 1.8cqw 4cqw; font-size: max(1.2cqw, 7px); font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
-  .a-brand { display: flex; align-items: center; gap: 1cqw; font-weight: 800; font-size: 2.2cqw; letter-spacing: 0; }
+  .a-bar { background: #1E2A22; color: #EEF0EA; display: flex; justify-content: space-between; align-items: center; padding: 1.8cqw 4cqw; font-size: max(1.3cqw, 7px); font-weight: 600; }
+  .a-brand { display: flex; align-items: center; gap: 1cqw; font-weight: 800; font-size: 2.2cqw; }
   .a-brand::before { content: ""; width: 1.8cqw; height: 1.8cqw; background: #C9A66B; }
   .a-links { display: flex; gap: 2.6cqw; opacity: .8; }
-  .a-body { display: grid; grid-template-columns: 1.15fr 1fr; gap: 3.4cqw; padding: 3cqw 4cqw; align-items: center; }
-  .a-kicker { display: inline-block; background: #C9A66B; padding: .5cqw 1.2cqw; font-size: max(1.2cqw, 7px); font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
-  .a-title { font-weight: 800; font-size: 4.4cqw; line-height: .95; text-transform: uppercase; letter-spacing: -.02em; margin: 1.6cqw 0; }
+  .a-body { display: grid; grid-template-columns: 1fr 1.15fr; gap: 3.4cqw; padding: 2.8cqw 4cqw; align-items: center; }
+  .a-kicker { display: inline-block; background: #C9A66B; padding: .5cqw 1.2cqw; font-size: max(1.2cqw, 7px); font-weight: 700; }
+  .a-title { font-weight: 800; font-size: 4.2cqw; line-height: 1; letter-spacing: -.03em; margin: 1.6cqw 0; }
   .a-body p { font-size: max(1.5cqw, 8px); margin-bottom: 2.2cqw; }
-  .a-btn { display: inline-block; background: #2F6B4F; color: #fff; padding: 1.3cqw 2.6cqw; font-weight: 800; font-size: max(1.3cqw, 7px); text-transform: uppercase; letter-spacing: .06em; }
-  .a-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2cqw; aspect-ratio: 1.25; }
-  .a-grid i { background: repeating-linear-gradient(100deg, #C9A66B 0 1.4cqw, #B8935A 1.4cqw 2.2cqw, #D4B37F 2.2cqw 3.6cqw); }
-  .a-grid i:nth-child(2) { background: #2F6B4F; }
-  .a-grid i:nth-child(3) { background: #1E2A22; }
-  .a-grid i:nth-child(4) { background: repeating-linear-gradient(10deg, #8E6A3E 0 1cqw, #A47C4A 1cqw 2.4cqw); }
+  .a-btn { display: inline-block; background: #2F6B4F; color: #fff; padding: 1.3cqw 2.6cqw; font-weight: 700; font-size: max(1.3cqw, 7px); }
+  .a-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2cqw; }
+  .a-tile { position: relative; aspect-ratio: 1.45; overflow: hidden; display: flex; align-items: flex-end; padding: 1.2cqw; color: #fff; font-weight: 700; font-size: max(1.4cqw, 7px); }
+  .a-tile::before { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 45%, rgba(20,28,22,.55)); }
+  .a-tile span { position: relative; }
+  .a-tile svg { position: absolute; top: 1.2cqw; right: 1.2cqw; width: 4.2cqw; height: auto; }
+  .a-tile:nth-child(1) { background: repeating-linear-gradient(100deg, #C9A66B 0 1.4cqw, #B8935A 1.4cqw 2.2cqw, #D4B37F 2.2cqw 3.6cqw); }
+  .a-tile:nth-child(2) { background: #2F6B4F; }
+  .a-tile:nth-child(3) { background: repeating-linear-gradient(10deg, #8E6A3E 0 1cqw, #A47C4A 1cqw 2.4cqw); }
+  .a-tile:nth-child(4) { background: #1E2A22; }
   .a-stats { display: flex; border-top: 2px solid #1E2A22; }
   .a-stats div { flex: 1; padding: 1.4cqw 4cqw; display: flex; align-items: baseline; gap: 1.2cqw; }
   .a-stats div + div { border-left: 2px solid #1E2A22; }
-  .a-stats b { font-size: 3.4cqw; font-weight: 800; letter-spacing: -.03em; }
-  .a-stats span { font-size: max(1.3cqw, 7px); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+  .a-stats b { font-size: 3.2cqw; font-weight: 800; letter-spacing: -.03em; }
+  .a-stats span { font-size: max(1.3cqw, 7px); font-weight: 600; }
 
 
   /* ---------- Sections ---------- */
@@ -972,53 +992,78 @@
   // Example businesses are generic ("your café"), never real companies
   const THEME_TEXT = {
     fr: {
-      vigneron: { brand: 'Votre cave', url: 'www.votre-cave.ch', nav: ['Nos vins', 'Le domaine', 'Contact'], kicker: 'Domaine familial · Valais', title: 'Le goût du Rhône', text: 'Dégustations sur réservation, livraison dans toute la Suisse.', btn: 'Réserver une dégustation', extra: ['Pinot noir', 'Fendant', 'Humagne'] },
-      cafe: { brand: 'Votre café', url: 'www.votre-cafe.ch', nav: ['Carte', 'Horaires'], kicker: '', title: 'Un café, un croissant, un sourire.', text: 'Ouvert 7 jours sur 7, pâtisseries maison chaque matin.', btn: 'Voir la carte', extra: ['Fait maison !', 'Cappuccino', 'CHF 4.50'] },
-      salon: { brand: 'Votre salon', url: 'www.votre-salon.ch', nav: ['Prestations', 'Équipe', 'Contact'], kicker: 'Coiffure · Valais', title: 'Prenez soin de vous.', text: '', btn: 'Prendre rendez-vous', extra: ['Coupe', 'Couleur', 'Soin'] },
-      artisan: { brand: 'Votre atelier', url: 'www.votre-atelier.ch', nav: ['Réalisations', 'Atelier', 'Devis'], kicker: 'Menuiserie · Valais', title: 'Du bois, du savoir-faire, du sur-mesure.', text: 'Cuisines, escaliers et agencements réalisés dans notre atelier.', btn: 'Demander un devis', extra: ['35', 'ans de métier', '500+', 'projets réalisés'] },
+      vigneron: { brand: 'Votre cave', url: 'www.votre-cave.ch', nav: ['Nos vins', 'Le domaine', 'Contact'], kicker: 'Domaine familial · Valais', title: 'Le goût du Rhône', text: 'Dégustations sur réservation, livraison dans toute la Suisse.', btn: 'Réserver une dégustation', wines: ['Pinot noir', 'Fendant', 'Humagne rouge'] },
+      cafe: { brand: 'Votre café', url: 'www.votre-cafe.ch', nav: ['Carte', 'Horaires'], title: 'Un café, un croissant, un sourire.', text: 'Ouvert 7 jours sur 7, pâtisseries maison chaque matin.', btn: 'Voir la carte', sticker: 'Fait maison !', menu: [['Cappuccino', '4.50'], ['Croissant', '2.80'], ['Brunch', '24.00']] },
+      salon: { brand: 'Votre salon', url: 'www.votre-salon.ch', nav: ['Prestations', 'Équipe', 'Contact'], kicker: 'Coiffure · Valais', title: 'Prenez soin de vous.', list: ['Coupe', 'Couleur', 'Soin'], book: 'Prochains créneaux libres' },
+      artisan: { brand: 'Votre atelier', url: 'www.votre-atelier.ch', nav: ['Réalisations', 'Atelier', 'Devis'], kicker: 'Menuiserie · Valais', title: 'Du bois, du savoir-faire, du sur-mesure.', text: 'Cuisines, escaliers et agencements réalisés dans notre atelier.', btn: 'Demander un devis', gallery: ['Cuisines', 'Escaliers', 'Dressings', 'Tables'], stats: ['35', 'ans de métier', '500+', 'projets réalisés'] },
     },
     it: {
-      vigneron: { brand: 'La tua cantina', url: 'www.la-tua-cantina.ch', nav: ['I nostri vini', 'La tenuta', 'Contatti'], kicker: 'Tenuta di famiglia · Vallese', title: 'Il gusto del Rodano', text: 'Degustazioni su prenotazione, consegna in tutta la Svizzera.', btn: 'Prenota una degustazione', extra: ['Pinot noir', 'Fendant', 'Humagne'] },
-      cafe: { brand: 'Il tuo caffè', url: 'www.il-tuo-caffe.ch', nav: ['Menù', 'Orari'], kicker: '', title: 'Un caffè, un cornetto, un sorriso.', text: 'Aperto 7 giorni su 7, dolci fatti in casa ogni mattina.', btn: 'Vedi il menù', extra: ['Fatto in casa!', 'Cappuccino', 'CHF 4.50'] },
-      salon: { brand: 'Il tuo salone', url: 'www.il-tuo-salone.ch', nav: ['Servizi', 'Team', 'Contatti'], kicker: 'Parrucchiere · Vallese', title: 'Prenditi cura di te.', text: '', btn: 'Prendi appuntamento', extra: ['Taglio', 'Colore', 'Trattamento'] },
-      artisan: { brand: 'Il tuo laboratorio', url: 'www.il-tuo-laboratorio.ch', nav: ['Lavori', 'Laboratorio', 'Preventivo'], kicker: 'Falegnameria · Vallese', title: 'Legno, esperienza e lavori su misura.', text: 'Cucine, scale e arredi realizzati nel nostro laboratorio.', btn: 'Chiedi un preventivo', extra: ['35', 'anni di mestiere', '500+', 'lavori realizzati'] },
+      vigneron: { brand: 'La tua cantina', url: 'www.la-tua-cantina.ch', nav: ['I nostri vini', 'La tenuta', 'Contatti'], kicker: 'Tenuta di famiglia · Vallese', title: 'Il gusto del Rodano', text: 'Degustazioni su prenotazione, consegna in tutta la Svizzera.', btn: 'Prenota una degustazione', wines: ['Pinot noir', 'Fendant', 'Humagne rouge'] },
+      cafe: { brand: 'Il tuo caffè', url: 'www.il-tuo-caffe.ch', nav: ['Menù', 'Orari'], title: 'Un caffè, un cornetto, un sorriso.', text: 'Aperto 7 giorni su 7, dolci fatti in casa ogni mattina.', btn: 'Vedi il menù', sticker: 'Fatto in casa!', menu: [['Cappuccino', '4.50'], ['Cornetto', '2.80'], ['Brunch', '24.00']] },
+      salon: { brand: 'Il tuo salone', url: 'www.il-tuo-salone.ch', nav: ['Servizi', 'Team', 'Contatti'], kicker: 'Parrucchiere · Vallese', title: 'Prenditi cura di te.', list: ['Taglio', 'Colore', 'Trattamento'], book: 'Prossimi orari liberi' },
+      artisan: { brand: 'Il tuo laboratorio', url: 'www.il-tuo-laboratorio.ch', nav: ['Lavori', 'Laboratorio', 'Preventivo'], kicker: 'Falegnameria · Vallese', title: 'Legno, esperienza e lavori su misura.', text: 'Cucine, scale e arredi realizzati nel nostro laboratorio.', btn: 'Chiedi un preventivo', gallery: ['Cucine', 'Scale', 'Armadi', 'Tavoli'], stats: ['35', 'anni di mestiere', '500+', 'lavori realizzati'] },
     },
     en: {
-      vigneron: { brand: 'Your winery', url: 'www.your-winery.ch', nav: ['Our wines', 'The estate', 'Contact'], kicker: 'Family estate · Valais', title: 'The taste of the Rhône', text: 'Tastings by appointment, delivery across Switzerland.', btn: 'Book a tasting', extra: ['Pinot noir', 'Fendant', 'Humagne'] },
-      cafe: { brand: 'Your café', url: 'www.your-cafe.ch', nav: ['Menu', 'Opening hours'], kicker: '', title: 'A coffee, a croissant, a smile.', text: 'Open 7 days a week, homemade pastries every morning.', btn: 'See the menu', extra: ['Homemade!', 'Cappuccino', 'CHF 4.50'] },
-      salon: { brand: 'Your salon', url: 'www.your-salon.ch', nav: ['Services', 'Team', 'Contact'], kicker: 'Hair salon · Valais', title: 'Take care of yourself.', text: '', btn: 'Book an appointment', extra: ['Cut', 'Colour', 'Care'] },
-      artisan: { brand: 'Your workshop', url: 'www.your-workshop.ch', nav: ['Our work', 'Workshop', 'Quote'], kicker: 'Joinery · Valais', title: 'Wood, craftsmanship and made-to-measure.', text: 'Kitchens, staircases and fittings made in our workshop.', btn: 'Get a quote', extra: ['35', 'years of craft', '500+', 'projects done'] },
+      vigneron: { brand: 'Your winery', url: 'www.your-winery.ch', nav: ['Our wines', 'The estate', 'Contact'], kicker: 'Family estate · Valais', title: 'The taste of the Rhône', text: 'Tastings by appointment, delivery across Switzerland.', btn: 'Book a tasting', wines: ['Pinot noir', 'Fendant', 'Humagne rouge'] },
+      cafe: { brand: 'Your café', url: 'www.your-cafe.ch', nav: ['Menu', 'Opening hours'], title: 'A coffee, a croissant, a smile.', text: 'Open 7 days a week, homemade pastries every morning.', btn: 'See the menu', sticker: 'Homemade!', menu: [['Cappuccino', '4.50'], ['Croissant', '2.80'], ['Brunch', '24.00']] },
+      salon: { brand: 'Your salon', url: 'www.your-salon.ch', nav: ['Services', 'Team', 'Contact'], kicker: 'Hair salon · Valais', title: 'Take care of yourself.', list: ['Cut', 'Colour', 'Care'], book: 'Next available slots' },
+      artisan: { brand: 'Your workshop', url: 'www.your-workshop.ch', nav: ['Our work', 'Workshop', 'Quote'], kicker: 'Joinery · Valais', title: 'Wood, craftsmanship and made-to-measure.', text: 'Kitchens, staircases and fittings made in our workshop.', btn: 'Get a quote', gallery: ['Kitchens', 'Staircases', 'Wardrobes', 'Tables'], stats: ['35', 'years of craft', '500+', 'projects done'] },
     },
   };
 
+  /* Small illustrations for the example sites */
+  const VINE_ROWS = Array.from({ length: 18 }, (_, i) => `<path d="M${i * 26 - 30} 300 L${i * 26 + 30} 214"/>`).join('');
+  const LANDSCAPE = `<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs><linearGradient id="vsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D7B0"/><stop offset="1" stop-color="#EAB088"/></linearGradient>
+    <clipPath id="vfront"><path d="M0 232 C120 196 260 214 400 190 V300 H0Z"/></clipPath></defs>
+    <rect width="400" height="300" fill="url(#vsky)"/><circle cx="285" cy="112" r="36" fill="#FBE9CF"/>
+    <path d="M0 168 C80 128 160 148 230 122 S360 116 400 136 V300 H0Z" fill="#C98B6C"/>
+    <path d="M0 202 C90 166 200 186 280 160 S380 166 400 170 V300 H0Z" fill="#9A4A43"/>
+    <path d="M0 232 C120 196 260 214 400 190 V300 H0Z" fill="#62703C"/>
+    <g clip-path="url(#vfront)" stroke="#3F4A25" stroke-width="4" stroke-linecap="round">${VINE_ROWS}</g></svg>`;
   const BOTTLE = '<svg viewBox="0 0 20 60" aria-hidden="true"><path d="M8 0h4v14c0 3 5 6 5 12v32a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V26c0-6 5-9 5-12z" fill="#8C2F39"/><rect x="5" y="34" width="10" height="11" fill="#F7F2EA" opacity=".9"/></svg>';
-  const CUP = '<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M18 42h56v16a28 28 0 0 1-56 0z" fill="#fff"/><path d="M74 48h6a10 10 0 0 1 0 20h-6" fill="none" stroke="#fff" stroke-width="6"/><path d="M34 16c-4 6 4 10 0 16M48 12c-4 6 4 10 0 16M62 16c-4 6 4 10 0 16" fill="none" stroke="#3A2418" stroke-width="3" stroke-linecap="round"/></svg>';
+  const CUP = '<svg class="c-cup" viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="46" cy="88" rx="38" ry="6" fill="#3A2418" opacity=".18"/><path d="M18 42h56v16a28 28 0 0 1-56 0z" fill="#fff"/><path d="M74 48h6a10 10 0 0 1 0 20h-6" fill="none" stroke="#fff" stroke-width="6"/><path d="M34 16c-4 6 4 10 0 16M48 12c-4 6 4 10 0 16M62 16c-4 6 4 10 0 16" fill="none" stroke="#3A2418" stroke-width="3" stroke-linecap="round"/></svg>';
+  const CROISSANT = '<svg class="c-croissant" viewBox="0 0 120 70" aria-hidden="true"><g fill="#E7A25A" stroke="#B86B2B" stroke-width="2.5"><ellipse cx="14" cy="52" rx="9" ry="7" transform="rotate(-35 14 52)"/><ellipse cx="106" cy="52" rx="9" ry="7" transform="rotate(35 106 52)"/><ellipse cx="28" cy="46" rx="13" ry="14" transform="rotate(-30 28 46)"/><ellipse cx="92" cy="46" rx="13" ry="14" transform="rotate(30 92 46)"/><ellipse cx="44" cy="38" rx="15" ry="20" transform="rotate(-18 44 38)"/><ellipse cx="76" cy="38" rx="15" ry="20" transform="rotate(18 76 38)"/><ellipse cx="60" cy="34" rx="16" ry="24"/></g></svg>';
+  const PORTRAIT = '<svg class="s2-scissors" viewBox="0 0 200 260" aria-hidden="true"><g fill="none" stroke="#2A211B" stroke-width="6" stroke-linecap="round"><circle cx="70" cy="206" r="24"/><circle cx="130" cy="206" r="24"/><path d="M86 188L136 40"/><path d="M114 188L64 40"/></g><circle cx="100" cy="146" r="6" fill="#2A211B"/></svg>';
+  const ICONS = [
+    '<svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="2"><rect x="5" y="8" width="30" height="26" rx="1"/><path d="M5 18h30M20 8v26M15 13h0M25 13h0M15 24v4M25 24v4" stroke-linecap="round"/></svg>',
+    '<svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M5 35h8v-8h8v-8h8v-8h6"/></svg>',
+    '<svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="2"><rect x="8" y="5" width="24" height="30" rx="1"/><path d="M20 5v30M17 19v3M23 19v3" stroke-linecap="round"/></svg>',
+    '<svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M4 16h32M8 16v18M32 16v18M12 16l-2-6h20l-2 6"/></svg>',
+  ];
+
   // One completely different page layout per business type
   const TEMPLATES = {
     vigneron: d => `<div class="tpl t-vigneron">
       <div class="v-nav"><span>${d.nav[0]}</span><b class="v-brand">${d.brand}</b><span>${d.nav[1]} · ${d.nav[2]}</span></div>
-      <div class="v-hero"><div class="v-kicker">${d.kicker}</div><div class="v-title">${d.title}</div><div class="v-rule"></div><p>${d.text}</p><span class="v-btn">${d.btn}</span></div>
-      <div class="v-bottles">${d.extra.map(n => `<div class="v-bottle">${BOTTLE}<span>${n}</span></div>`).join('')}</div>
+      <div class="v-main">
+        <div class="v-copy"><div class="v-kicker">${d.kicker}</div><div class="v-title">${d.title}</div><div class="v-rule"></div><p>${d.text}</p><span class="v-btn">${d.btn}</span></div>
+        <div class="v-photo">${LANDSCAPE}</div>
+      </div>
+      <div class="v-wines">${d.wines.map((n, i) => `<div class="v-wine">${BOTTLE}<div><b>${n}</b><span>CHF ${['24', '19', '32'][i]}</span></div></div>`).join('')}</div>
     </div>`,
     cafe: d => `<div class="tpl t-cafe">
+      <div class="c-awning"></div>
       <div class="c-nav"><b class="c-brand">${d.brand}</b><div class="c-links">${d.nav.map(n => `<span>${n}</span>`).join('')}</div></div>
       <div class="c-body">
         <div><div class="c-title">${d.title}</div><p>${d.text}</p><span class="c-btn">${d.btn}</span></div>
-        <div class="c-art"><div class="c-blob"></div>${CUP}<span class="c-sticker">${d.extra[0]}</span><span class="c-price">${d.extra[1]}<b>${d.extra[2]}</b></span></div>
+        <div class="c-art"><div class="c-blob"></div>${CUP}${CROISSANT}<span class="c-sticker">${d.sticker}</span></div>
       </div>
+      <div class="c-menu">${d.menu.map(([n, p]) => `<div>${n}<b>CHF ${p}</b></div>`).join('')}</div>
     </div>`,
     salon: d => `<div class="tpl t-salon">
-      <div class="s2-arch"></div>
+      <div class="s2-arch">${PORTRAIT}</div>
       <div class="s2-nav"><b class="s2-brand">${d.brand}</b><div class="s2-links">${d.nav.map(n => `<span>${n}</span>`).join('')}</div></div>
-      <div class="s2-hero"><div class="s2-kicker">${d.kicker}</div><div class="s2-title">${d.title}</div><div class="s2-list">${d.extra.map(n => `<span>${n}</span>`).join('')}</div><span class="s2-btn">${d.btn}</span></div>
+      <div class="s2-hero"><div class="s2-kicker">${d.kicker}</div><div class="s2-title">${d.title}</div><div class="s2-list">${d.list.map(n => `<span>${n}</span>`).join('')}</div></div>
+      <div class="s2-book"><small>${d.book}</small><div class="s2-slots"><span>09:00</span><span>10:30</span><span>14:00</span><span>16:30</span></div></div>
     </div>`,
     artisan: d => `<div class="tpl t-artisan">
       <div class="a-bar"><b class="a-brand">${d.brand}</b><div class="a-links">${d.nav.map(n => `<span>${n}</span>`).join('')}</div></div>
       <div class="a-body">
         <div><span class="a-kicker">${d.kicker}</span><div class="a-title">${d.title}</div><p>${d.text}</p><span class="a-btn">${d.btn}</span></div>
-        <div class="a-grid"><i></i><i></i><i></i><i></i></div>
+        <div class="a-grid">${d.gallery.map((n, i) => `<div class="a-tile">${ICONS[i]}<span>${n}</span></div>`).join('')}</div>
       </div>
-      <div class="a-stats"><div><b>${d.extra[0]}</b><span>${d.extra[1]}</span></div><div><b>${d.extra[2]}</b><span>${d.extra[3]}</span></div></div>
+      <div class="a-stats"><div><b>${d.stats[0]}</b><span>${d.stats[1]}</span></div><div><b>${d.stats[2]}</b><span>${d.stats[3]}</span></div></div>
     </div>`,
   };
   const CHAT = {
