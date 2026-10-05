@@ -263,7 +263,7 @@
 
   /* ---------- Sections ---------- */
   section { padding: 120px 0; }
-  .sec-head { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-bottom: 60px; align-items: end; }
+  .sec-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; margin-bottom: 60px; }
   h2 { margin: 0; font-size: clamp(38px, 5.4vw, 76px); line-height: .98; letter-spacing: -.04em; font-weight: 600; }
 
   .sec-head p { margin: 0; color: var(--ink-soft); max-width: 42ch; }
@@ -420,8 +420,8 @@
 
   /* About */
   #apropos { padding: 90px 0 30px; }
-  .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; }
-  .about-side { display: flex; flex-direction: column; gap: 28px; }
+  .about-grid { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+  .about-side { display: flex; flex-direction: column; align-items: center; }
   .portrait { position: relative; margin: 0; max-width: 340px; }
   .portrait img {
     width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%;
@@ -434,11 +434,11 @@
     transform: rotate(-12deg); animation: wobble 6s ease-in-out infinite;
   }
   @keyframes wobble { 50% { transform: rotate(8deg) translateY(-6px); } }
-  .about-main { align-self: start; }
+  .about-main { max-width: 980px; }
   .about-big { font-size: clamp(28px, 3.4vw, 46px); line-height: 1.15; letter-spacing: -.025em; margin: 0; font-weight: 500; }
   .about-big .serif { color: var(--accent); }
   .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 56px; }
-  .fact { border-top: 1px solid var(--ink); padding-top: 16px; }
+  .fact { border-top: 1px solid var(--ink); padding-top: 16px; text-align: left; }
   .fact b { display: block; font-size: 40px; letter-spacing: -.04em; font-weight: 600; line-height: 1.1; }
   .fact span { color: var(--ink-soft); font-size: 15px; }
 
