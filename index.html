@@ -54,7 +54,7 @@
   .mono { font-size: 12.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
   .serif { color: var(--accent); }
   .label { display: inline-flex; align-items: center; gap: 10px; color: var(--ink-soft); }
-  .label::before { content: ''; width: 18px; height: 1px; background: currentColor; }
+  .label::before { content: none; }
 
 
   /* progress bar */
@@ -418,6 +418,7 @@
   .p-shot:hover .p-badge { transform: scale(1) rotate(0); }
 
   /* About */
+  #apropos { padding: 90px 0 30px; }
   .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; }
   .about-side { display: flex; flex-direction: column; gap: 28px; }
   .portrait { position: relative; margin: 0; max-width: 340px; }
@@ -510,11 +511,11 @@
 <header>
   <a href="#top" class="logo" aria-label="Pamela Morganti">pm<b>.</b></a>
   <nav>
+    <a href="#apropos" data-i18n="nav.about">À propos</a>
     <a href="#services" data-i18n="nav.services">Services</a>
     <a href="#realisations" data-i18n="nav.work">Réalisations</a>
-    <a href="#recrutement" data-i18n="nav.hire">Recrutement</a>
     <a href="#methode" data-i18n="nav.method">Méthode</a>
-    <a href="#apropos" data-i18n="nav.about">À propos</a>
+    <a href="#recrutement" data-i18n="nav.hire">Recrutement</a>
     <a href="#contact" data-i18n="nav.contact">Contact</a>
   </nav>
   <div class="head-right">
@@ -554,11 +555,31 @@
     </div>
   </section>
 
+  <!-- About -->
+  <section id="apropos">
+    <div class="wrap">
+      <div class="about-grid reveal">
+        <div class="about-side">
+          <span class="label mono" data-i18n="ab.label">À propos</span>
+        </div>
+        <div class="about-main">
+          <p class="about-big" data-i18n="ab.p">Je m'appelle Pamela. Basée à Sion, j'accompagne les entreprises et les particuliers du Valais pour créer un site <span class="serif">qui leur ressemble</span> : clair, rapide et pensé pour leurs clients.</p>
+          <div class="facts">
+            <div class="fact"><b>24h</b><span data-i18n="f.1">pour une réponse à votre demande</span></div>
+            <div class="fact"><b>0 CHF</b><span data-i18n="f.2">pour le devis, sans engagement</span></div>
+            <div class="fact"><b>1</b><span data-i18n="f.3">seule interlocutrice, du début à la fin</span></div>
+            <div class="fact"><b>3</b><span data-i18n="f.4">langues : français, italien, anglais</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Services -->
   <section id="services">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="label mono" data-i18n="sv.label">01. Services</span>
+        <span class="label mono" data-i18n="sv.label">Services</span>
         <div>
           <h2 data-i18n="sv.h2">Ce que je <span class="serif">crée</span> pour vous</h2>
         </div>
@@ -652,7 +673,7 @@
   <section id="realisations" style="padding-top:0">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="label mono" data-i18n="wk.label">02. Réalisations</span>
+        <span class="label mono" data-i18n="wk.label">Réalisations</span>
         <div>
           <h2 data-i18n="wk.h2">Mes projets <span class="serif">en ligne</span></h2>
         </div>
@@ -661,7 +682,6 @@
       <div class="work">
         <article class="project reveal">
           <div class="p-info">
-            <span class="p-num serif">01</span>
             <h3>Cook Mind</h3>
             <p data-i18n="cook.p">Un assistant de cuisine basé sur l'intelligence artificielle : on lui dit ce qu'il y a dans le frigo et ses préférences (végétarien, sans fruits à coque…), il propose des recettes réalisables tout de suite, dans un chat où la réponse s'écrit en direct.</p>
             <ul class="tags mono"><li>Ruby on Rails</li><li data-i18n="tag.ai">Intelligence artificielle</li><li data-i18n="tag.livechat">Chat en direct</li><li class="tag-lang" data-i18n="tag.en">Interface en anglais</li></ul>
@@ -679,7 +699,6 @@
 
         <article class="project reveal">
           <div class="p-info">
-            <span class="p-num serif">02</span>
             <h3>Eat Healthy</h3>
             <p data-i18n="eat.p">On note ce qu'on mange, et l'application montre comment on a mangé sur la semaine : part d'ultra-transformés, variété de végétaux, Nutri-Score, fibres, sucre et sel comparés aux repères de l'OMS. Sans compter les calories.</p>
             <ul class="tags mono"><li>Django</li><li>htmx</li><li>Chart.js</li><li>OpenFoodFacts</li></ul>
@@ -697,7 +716,6 @@
 
         <article class="project reveal">
           <div class="p-info">
-            <span class="p-num serif">03</span>
             <h3>My Watch List</h3>
             <p data-i18n="watch.p">Des listes de films avec de vrais titres, des notes en étoiles et des critiques. Un deck « à la Tinder » suggère des films, et un mode « Moins de 12 ans » filtre les contenus inadaptés. En français, italien et anglais.</p>
             <ul class="tags mono"><li>Ruby on Rails</li><li>Hotwire</li><li>API TMDb</li><li data-i18n="tag.3lang">3 langues</li></ul>
@@ -715,7 +733,6 @@
 
         <article class="project reveal">
           <div class="p-info">
-            <span class="p-num serif">04</span>
             <h3>Split Expenses</h3>
             <p data-i18n="split.p">Pour partager les dépenses d'un voyage ou d'une colocation : on note qui a payé quoi, et un algorithme calcule le plus petit nombre de virements pour que tout le monde soit quitte.</p>
             <ul class="tags mono"><li>Django REST</li><li>API</li><li>PostgreSQL</li><li>Swagger</li><li class="tag-lang" data-i18n="tag.en">Interface en anglais</li></ul>
@@ -734,12 +751,30 @@
     </div>
   </section>
 
+  <!-- Process -->
+  <section id="methode" class="process">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="label mono" data-i18n="md.label">Méthode</span>
+        <div>
+          <h2 data-i18n="md.h2">Simple, clair, <span class="serif">sans jargon.</span></h2>
+        </div>
+      </div>
+      <div class="steps" id="steps">
+        <div class="step"><div class="n">1</div><h3 data-i18n="s1.h">On se parle</h3><p data-i18n="s1.p">Un appel ou un café à Sion pour comprendre votre activité et vos objectifs.</p></div>
+        <div class="step"><div class="n">2</div><h3 data-i18n="s2.h">La maquette</h3><p data-i18n="s2.p">Vous voyez votre futur site avant qu'il existe, et on l'ajuste ensemble.</p></div>
+        <div class="step"><div class="n">3</div><h3 data-i18n="s3.h">La création</h3><p data-i18n="s3.p">Je construis le site : textes, images, mobile, référencement Google.</p></div>
+        <div class="step"><div class="n">4</div><h3 data-i18n="s4.h">En ligne !</h3><p data-i18n="s4.p">Mise en ligne, prise en main et suivi pour que tout continue de tourner.</p></div>
+      </div>
+    </div>
+  </section>
+
   <!-- Hiring -->
   <section id="recrutement">
     <div class="wrap">
       <div class="hire reveal">
         <div class="hire-head">
-          <span class="label mono" data-i18n="hr.label">03. Vous recrutez ?</span>
+          <span class="label mono" data-i18n="hr.label">Vous recrutez ?</span>
           <h2 data-i18n="hr.h2">Développeuse web full-stack, <span class="serif">prête à coder.</span></h2>
           <p data-i18n="hr.p">En plus des projets clients, je suis ouverte à un poste ou à des missions de développeuse web. Mes applications sont en ligne, testées et documentées : le code parle pour moi.</p>
           <div class="ctas">
@@ -768,48 +803,10 @@
     </div>
   </section>
 
-  <!-- Process -->
-  <section id="methode" class="process">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="label mono" data-i18n="md.label">04. Méthode</span>
-        <div>
-          <h2 data-i18n="md.h2">Simple, clair, <span class="serif">sans jargon.</span></h2>
-        </div>
-      </div>
-      <div class="steps" id="steps">
-        <div class="step"><div class="n">1</div><h3 data-i18n="s1.h">On se parle</h3><p data-i18n="s1.p">Un appel ou un café à Sion pour comprendre votre activité et vos objectifs.</p></div>
-        <div class="step"><div class="n">2</div><h3 data-i18n="s2.h">La maquette</h3><p data-i18n="s2.p">Vous voyez votre futur site avant qu'il existe, et on l'ajuste ensemble.</p></div>
-        <div class="step"><div class="n">3</div><h3 data-i18n="s3.h">La création</h3><p data-i18n="s3.p">Je construis le site : textes, images, mobile, référencement Google.</p></div>
-        <div class="step"><div class="n">4</div><h3 data-i18n="s4.h">En ligne !</h3><p data-i18n="s4.p">Mise en ligne, prise en main et suivi pour que tout continue de tourner.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="apropos">
-    <div class="wrap">
-      <div class="about-grid reveal">
-        <div class="about-side">
-          <span class="label mono" data-i18n="ab.label">05. À propos</span>
-        </div>
-        <div class="about-main">
-          <p class="about-big" data-i18n="ab.p">Je m'appelle Pamela. Basée à Sion, j'accompagne les entreprises et les particuliers du Valais pour créer un site <span class="serif">qui leur ressemble</span> : clair, rapide et pensé pour leurs clients.</p>
-          <div class="facts">
-            <div class="fact"><b>24h</b><span data-i18n="f.1">pour une réponse à votre demande</span></div>
-            <div class="fact"><b>0 CHF</b><span data-i18n="f.2">pour le devis, sans engagement</span></div>
-            <div class="fact"><b>1</b><span data-i18n="f.3">seule interlocutrice, du début à la fin</span></div>
-            <div class="fact"><b>3</b><span data-i18n="f.4">langues : français, italien, anglais</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Contact -->
   <section id="contact" class="contact">
     <div class="wrap reveal">
-      <span class="label mono" data-i18n="ct.label">06. Contact</span>
+      <span class="label mono" data-i18n="ct.label">Contact</span>
       <h2 style="margin-top:20px" data-i18n="ct.h2">Parlons de votre <span class="serif">projet.</span></h2>
       <a class="big-mail" href="mailto:Pahelemoba@gmail.com">pahelemoba<span class="serif">@</span>gmail.com</a>
       <div class="ctas">
@@ -855,7 +852,7 @@
       'st.more': `Vedi le competenze tecniche`,
       'chip.vigneron': `Viticoltore`, 'chip.cafe': `Caffè`, 'chip.salon': `Parrucchiere`, 'chip.artisan': `Artigiano`,
       'mock.links': `<span>Home</span><span>Servizi</span><span>Contatti</span>`,
-      'sv.label': `01. Servizi`, 'sv.h2': `Cosa <span class="serif">creo</span> per te`,
+      'sv.label': `Servizi`, 'sv.h2': `Cosa <span class="serif">creo</span> per te`,
       'ai.num': `Siti con intelligenza artificiale`,
       'ai.h3': `Un assistente che risponde ai tuoi clienti, <span class="serif">anche alle 23.</span>`,
       'ai.p': `Chatbot, prenotazioni, risposte automatiche: integro l'intelligenza artificiale per far risparmiare tempo alla tua attività.`,
@@ -870,7 +867,7 @@
       'app.more': `Guarda le mie 4 app online <span>↓</span>`,
       'c4.num': `Manutenzione e aggiornamenti`, 'c4.h3': `Resto al tuo fianco <span class="serif">anche dopo la messa online.</span>`,
       'c4.p': `Aggiornamenti, sicurezza e prestazioni nel tempo, con una persona vera a cui scrivere.`,
-      'wk.label': `02. Progetti`, 'wk.h2': `I miei progetti <span class="serif">online</span>`,
+      'wk.label': `Progetti`, 'wk.h2': `I miei progetti <span class="serif">online</span>`,
       'wk.view': `Vedi il sito`, 'wk.code': `Codice sorgente`, 'wk.visit': `Visita ↗`, 'wk.demo': `Account demo:`,
       'cook.p': `Un assistente di cucina basato sull'intelligenza artificiale: gli dici cosa c'è nel frigo e le tue preferenze (vegetariano, senza frutta a guscio…), e ti propone ricette da fare subito, in una chat dove la risposta si scrive in diretta.`,
       'tag.ai': `Intelligenza artificiale`, 'tag.livechat': `Chat in diretta`, 'tag.en': `Interfaccia in inglese`, 'tag.3lang': `3 lingue`,
@@ -878,7 +875,7 @@
       'eat.p': `Annoti quello che mangi, e l'app ti mostra come hai mangiato durante la settimana: quota di ultra-processati, varietà di vegetali, Nutri-Score, fibre, zuccheri e sale rispetto ai riferimenti dell'OMS. Senza contare le calorie.`,
       'watch.p': `Liste di film con titoli veri, voti a stelle e recensioni. Un mazzo «alla Tinder» suggerisce film, e una modalità «Under 12» filtra i contenuti non adatti. In francese, italiano e inglese.`,
       'split.p': `Per dividere le spese di un viaggio o di un appartamento condiviso: annoti chi ha pagato cosa, e un algoritmo calcola il minor numero di bonifici per chiudere i conti.`,
-      'hr.label': `03. Stai assumendo?`,
+      'hr.label': `Stai assumendo?`,
       'hr.h2': `Sviluppatrice web full-stack, <span class="serif">pronta a programmare.</span>`,
       'hr.p': `Oltre ai progetti per clienti, sono aperta a un impiego o a incarichi come sviluppatrice web. Le mie applicazioni sono online, testate e documentate: il codice parla per me.`,
       'hr.gh': `Il mio GitHub`, 'hr.mail': `Scrivimi`, 'hr.subject': `Posizione di sviluppatrice web`,
@@ -887,16 +884,16 @@
       'st.ai': `Intelligenza artificiale`, 'st.aiList': `<li>Integrazione di LLM</li><li>Chat in streaming</li><li>Prompt costruiti dai dati utente</li>`,
       'st.q': `Qualità`, 'st.heroku': `Deploy su Heroku`, 'st.lang': `Lingue`,
       'st.langList': `<li>Italiano <em class="lvl">madrelingua</em></li><li>Francese <em class="lvl">fluente, scritto e parlato</em></li><li>Inglese <em class="lvl">buon livello</em></li>`,
-      'md.label': `04. Metodo`, 'md.h2': `Semplice, chiaro, <span class="serif">senza paroloni.</span>`,
+      'md.label': `Metodo`, 'md.h2': `Semplice, chiaro, <span class="serif">senza paroloni.</span>`,
       's1.h': `Parliamone`, 's1.p': `Una chiamata o un caffè a Sion per capire la tua attività e i tuoi obiettivi.`,
       's2.h': `Il prototipo`, 's2.p': `Vedi il tuo futuro sito prima che esista, e lo sistemiamo insieme.`,
       's3.h': `La realizzazione`, 's3.p': `Costruisco il sito: testi, immagini, versione mobile, posizionamento su Google.`,
       's4.h': `Online!`, 's4.p': `Messa online, spiegazione di come usarlo e assistenza perché tutto continui a funzionare.`,
-      'ab.label': `05. Chi sono`, 'ab.hi': `Ciao!`,
+      'ab.label': `Chi sono`, 'ab.hi': `Ciao!`,
       'ab.p': `Mi chiamo Pamela. Da Sion accompagno aziende e privati del Vallese nella creazione di un sito <span class="serif">che li rappresenti</span>: chiaro, veloce e pensato per i loro clienti.`,
       'f.1': `per una risposta alla tua richiesta`, 'f.2': `per il preventivo, senza impegno`,
       'f.3': `sola persona di riferimento, dall'inizio alla fine`, 'f.4': `lingue: italiano, francese, inglese`,
-      'ct.label': `06. Contatti`, 'ct.h2': `Parliamo del tuo <span class="serif">progetto.</span>`,
+      'ct.label': `Contatti`, 'ct.h2': `Parliamo del tuo <span class="serif">progetto.</span>`,
       'ft.1': `Pamela Morganti, Sion (Vallese)`, 'ft.2': `Siti e applicazioni web su misura, con o senza intelligenza artificiale`,
     },
     en: {
@@ -920,7 +917,7 @@
       'st.more': `See technical skills`,
       'chip.vigneron': `Winemaker`, 'chip.cafe': `Café`, 'chip.salon': `Salon`, 'chip.artisan': `Craftsman`,
       'mock.links': `<span>Home</span><span>Services</span><span>Contact</span>`,
-      'sv.label': `01. Services`, 'sv.h2': `What I <span class="serif">build</span> for you`,
+      'sv.label': `Services`, 'sv.h2': `What I <span class="serif">build</span> for you`,
       'ai.num': `Sites with artificial intelligence`,
       'ai.h3': `An assistant that answers your customers, <span class="serif">even at 11 pm.</span>`,
       'ai.p': `Chatbots, bookings, automatic replies: I integrate artificial intelligence to save your business time.`,
@@ -935,7 +932,7 @@
       'app.more': `See my 4 live apps <span>↓</span>`,
       'c4.num': `Maintenance & updates`, 'c4.h3': `I'm still here <span class="serif">after launch.</span>`,
       'c4.p': `Updates, security and performance over time, with a real person to write to.`,
-      'wk.label': `02. Work`, 'wk.h2': `My projects, <span class="serif">live</span>`,
+      'wk.label': `Work`, 'wk.h2': `My projects, <span class="serif">live</span>`,
       'wk.view': `View site`, 'wk.code': `Source code`, 'wk.visit': `Visit ↗`, 'wk.demo': `Demo account:`,
       'cook.p': `A cooking assistant powered by artificial intelligence: tell it what's in your fridge and your preferences (vegetarian, nut-free…), and it suggests recipes you can make right now, in a chat where the answer streams in live.`,
       'tag.ai': `Artificial intelligence`, 'tag.livechat': `Live chat`, 'tag.en': ``, 'tag.3lang': `3 languages`,
@@ -943,7 +940,7 @@
       'eat.p': `Log what you eat and the app shows how you ate over the week: share of ultra-processed food, plant variety, Nutri-Score, fibre, sugar and salt compared with WHO guidelines. No calorie counting.`,
       'watch.p': `Movie lists with real titles, star ratings and reviews. A Tinder-style deck suggests films, and an "Under 12" mode filters out unsuitable content. In French, Italian and English.`,
       'split.p': `For splitting the costs of a trip or a shared flat: log who paid for what, and an algorithm works out the fewest transfers to settle everyone up.`,
-      'hr.label': `03. Hiring?`,
+      'hr.label': `Hiring?`,
       'hr.h2': `Full-stack web developer, <span class="serif">ready to code.</span>`,
       'hr.p': `Alongside client projects, I'm open to a job or freelance work as a web developer. My apps are live, tested and documented: the code speaks for itself.`,
       'hr.gh': `My GitHub`, 'hr.mail': `Email me`, 'hr.subject': `Web developer position`,
@@ -952,16 +949,16 @@
       'st.ai': `Artificial intelligence`, 'st.aiList': `<li>LLM integration</li><li>Streaming chat</li><li>Prompts built from user data</li>`,
       'st.q': `Quality`, 'st.heroku': `Heroku deployment`, 'st.lang': `Languages`,
       'st.langList': `<li>Italian <em class="lvl">native</em></li><li>French <em class="lvl">fluent, written and spoken</em></li><li>English <em class="lvl">good level</em></li>`,
-      'md.label': `04. Process`, 'md.h2': `Simple, clear, <span class="serif">no jargon.</span>`,
+      'md.label': `Process`, 'md.h2': `Simple, clear, <span class="serif">no jargon.</span>`,
       's1.h': `We talk`, 's1.p': `A call or a coffee in Sion to understand your business and your goals.`,
       's2.h': `The mockup`, 's2.p': `You see your future site before it exists, and we fine-tune it together.`,
       's3.h': `The build`, 's3.p': `I build the site: copy, images, mobile, Google search visibility.`,
       's4.h': `Live!`, 's4.p': `Launch, a walkthrough, and ongoing support to keep everything running.`,
-      'ab.label': `05. About`, 'ab.hi': `Hello!`,
+      'ab.label': `About`, 'ab.hi': `Hello!`,
       'ab.p': `I'm Pamela. Based in Sion, I help businesses and individuals across Valais build a website <span class="serif">that feels like them</span>: clear, fast and designed for their customers.`,
       'f.1': `to reply to your request`, 'f.2': `for the quote, no commitment`,
       'f.3': `single point of contact, start to finish`, 'f.4': `languages: French, Italian, English`,
-      'ct.label': `06. Contact`, 'ct.h2': `Let's talk about your <span class="serif">project.</span>`,
+      'ct.label': `Contact`, 'ct.h2': `Let's talk about your <span class="serif">project.</span>`,
       'ft.1': `Pamela Morganti, Sion (Valais)`, 'ft.2': `Custom websites and web apps, with or without artificial intelligence`,
     },
   };
