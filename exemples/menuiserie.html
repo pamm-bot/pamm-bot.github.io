@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier du Bois Clair | Site d'exemple</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --wood: #B5652A; --dark: #1F1A16; --paper: #F4F1EC; --soft: #6B625A; --line: rgba(31,26,22,.14); }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'Archivo', system-ui, sans-serif; color: var(--dark); background: var(--paper); line-height: 1.6; font-size: 17px; }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  .demo-bar { background: #121110; color: #F3EFE6; font-size: 14px; text-align: center; padding: 9px 16px; }
+  .demo-bar a { color: #FFB38F; font-weight: 600; }
+
+  header .wrap { display: flex; justify-content: space-between; align-items: center; height: 76px; }
+  .brand { font-weight: 800; font-size: 20px; letter-spacing: -.01em; }
+  .brand span { color: var(--wood); }
+  header nav { display: flex; gap: 26px; font-size: 15px; font-weight: 500; }
+  header nav a { text-decoration: none; }
+  .call { background: var(--dark); color: #fff; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 15px; }
+
+  .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding-top: 40px; padding-bottom: 80px; }
+  .hero h1 { font-weight: 800; font-size: clamp(40px, 6vw, 64px); line-height: 1.02; letter-spacing: -.03em; margin: 0 0 20px; }
+  .hero h1 em { font-style: normal; color: var(--wood); }
+  .hero p { color: var(--soft); font-size: 19px; margin: 0 0 28px; }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 16px; background: var(--wood); color: #fff; }
+  .hero-img { border-radius: 10px; overflow: hidden; aspect-ratio: 3/2; }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; }
+  .trust { display: flex; gap: 28px; margin-top: 30px; font-size: 15px; color: var(--soft); flex-wrap: wrap; }
+  .trust b { color: var(--dark); }
+
+  section { padding: 80px 0; }
+  .dark { background: var(--dark); color: #fff; }
+  h2 { font-weight: 800; font-size: 40px; letter-spacing: -.02em; line-height: 1.1; margin: 0 0 14px; }
+  .lead { color: var(--soft); max-width: 580px; margin: 0; }
+  .dark .lead { color: #B9AFA6; }
+
+  .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+  .service { background: #2A241F; border-radius: 10px; overflow: hidden; }
+  .service img { width: 100%; aspect-ratio: 3/2; object-fit: cover; }
+  .service div { padding: 22px; }
+  .service h3 { margin: 0 0 6px; font-size: 21px; }
+  .service p { margin: 0; color: #B9AFA6; font-size: 15px; }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; counter-reset: s; }
+  .step { border-top: 3px solid var(--wood); padding-top: 18px; }
+  .step::before { counter-increment: s; content: "0" counter(s); font-weight: 800; color: var(--wood); }
+  .step h3 { margin: 6px 0 6px; font-size: 21px; }
+  .step p { margin: 0; color: var(--soft); font-size: 15px; }
+
+  .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; background: #fff; border-radius: 14px; padding: 48px; border: 1px solid var(--line); }
+  .contact ul { list-style: none; padding: 0; margin: 0; }
+  .contact li { padding: 12px 0; border-bottom: 1px solid var(--line); display: flex; gap: 16px; }
+  .contact li span { width: 110px; color: var(--soft); flex-shrink: 0; }
+
+  footer { padding: 30px 0 44px; font-size: 14px; color: var(--soft); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+  @media (max-width: 800px) {
+    header nav { display: none; }
+    .hero, .contact { grid-template-columns: 1fr; }
+    .contact { padding: 28px; }
+    .services, .steps { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-bar">Site d'exemple créé par Pamela Morganti. L'entreprise et les textes sont inventés. <a href="../#realisations">← Retour au portfolio</a></div>
+
+<header>
+  <div class="wrap">
+    <span class="brand">Atelier du Bois <span>Clair</span></span>
+    <nav><a href="#travaux">Travaux</a><a href="#comment">Comment ça marche</a><a href="#contact">Contact</a></nav>
+    <a class="call" href="#contact">Nous appeler</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <h1>Des meubles en bois <em>faits pour durer.</em></h1>
+      <p>Menuiserie artisanale en Valais : meubles sur mesure, cuisines, escaliers et réparations.</p>
+      <a class="btn" href="#contact">Demander un rendez-vous</a>
+      <div class="trust"><span><b>25 ans</b> d'expérience</span><span><b>Bois local</b> du Valais</span><span><b>Déplacement</b> gratuit</span></div>
+    </div>
+    <div class="hero-img"><img src="../img/ex/artisan.jpg" alt="L'atelier de menuiserie"></div>
+  </div>
+
+  <section id="travaux" class="dark">
+    <div class="wrap">
+      <h2>Ce que nous faisons</h2>
+      <p class="lead">Chaque pièce est dessinée avec vous et fabriquée dans notre atelier.</p>
+      <div class="services">
+        <div class="service"><img src="../img/ex/decoupe.jpg" alt="Découpe du bois"><div><h3>Meubles sur mesure</h3><p>Tables, bibliothèques, rangements adaptés à votre intérieur.</p></div></div>
+        <div class="service"><img src="../img/ex/atelier.jpg" alt="Établi de l'atelier"><div><h3>Cuisines et escaliers</h3><p>Des pièces solides pour les endroits qu'on utilise tous les jours.</p></div></div>
+        <div class="service"><img src="../img/ex/outils.jpg" alt="Outils de menuisier"><div><h3>Réparations</h3><p>Un meuble ancien abîmé ? Nous lui redonnons une deuxième vie.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="comment">
+    <div class="wrap">
+      <h2>Comment ça marche</h2>
+      <p class="lead">Simple et sans surprise.</p>
+      <div class="steps">
+        <div class="step"><h3>On se rencontre</h3><p>Nous venons chez vous pour voir l'espace et écouter votre idée.</p></div>
+        <div class="step"><h3>Le projet et le prix</h3><p>Vous recevez un dessin et un prix clair avant de décider.</p></div>
+        <div class="step"><h3>Fabrication et pose</h3><p>Nous fabriquons votre meuble à l'atelier, puis nous l'installons.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-top:0">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <h2>Parlons de votre projet.</h2>
+          <p class="lead">Appelez-nous ou passez à l'atelier, du lundi au vendredi.</p>
+        </div>
+        <ul>
+          <li><span>Téléphone</span>027 xxx xx xx</li>
+          <li><span>E-mail</span>contact@atelier-exemple.ch</li>
+          <li><span>Horaires</span>Lun – ven, 7h30 – 17h</li>
+          <li><span>Adresse</span>Valais (adresse fictive)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Atelier du Bois Clair · entreprise fictive</span>
+    <span>Site d'exemple · <a href="../">Pamela Morganti</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

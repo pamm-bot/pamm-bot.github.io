@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domaine des Trois Coteaux | Site d'exemple</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --wine: #6E1F2A; --cream: #F7F2EA; --ink: #2B1A1C; --soft: #6D5E5A; --line: rgba(43,26,28,.14); }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'Inter', system-ui, sans-serif; color: var(--ink); background: var(--cream); line-height: 1.65; font-size: 17px; }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+  .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  .demo-bar { background: #121110; color: #F3EFE6; font-size: 14px; text-align: center; padding: 9px 16px; }
+  .demo-bar a { color: #FFB38F; font-weight: 600; }
+
+  .hero { position: relative; min-height: 82vh; color: #fff; display: flex; flex-direction: column; }
+  .hero::before { content: ""; position: absolute; inset: 0; background: url(../img/ex/vigneron.jpg) center/cover; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,10,8,.5), rgba(20,10,8,.1) 35%, rgba(20,10,8,.75)); }
+  .hero > * { position: relative; z-index: 1; width: 100%; }
+  .top { display: flex; justify-content: space-between; align-items: center; padding-top: 22px; padding-bottom: 22px; }
+  .brand { letter-spacing: .28em; font-size: 14px; font-weight: 600; text-transform: uppercase; }
+  .top nav { display: flex; gap: 26px; font-size: 15px; }
+  .top nav a { text-decoration: none; opacity: .9; }
+  .hero-copy { margin-top: auto; padding-bottom: 64px; }
+  .hero-copy > * { max-width: 620px; }
+  .kicker { letter-spacing: .16em; text-transform: uppercase; font-size: 13px; opacity: .85; }
+  .hero h1 { font-weight: 500; font-size: clamp(44px, 7vw, 76px); line-height: 1; margin: 14px 0 18px; }
+  .hero p { font-size: 18px; opacity: .92; margin: 0 0 26px; }
+  .btn { display: inline-block; padding: 13px 24px; border-radius: 2px; text-decoration: none; font-weight: 600; font-size: 15px; }
+  .btn-light { background: #fff; color: var(--ink); }
+  .btn-wine { background: var(--wine); color: #fff; }
+
+  section { padding: 84px 0; }
+  h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 44px; line-height: 1.1; margin: 0 0 16px; }
+  .lead { color: var(--soft); max-width: 600px; }
+
+  .story { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .story .num { display: flex; gap: 40px; margin-top: 26px; }
+  .story .num b { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 500; color: var(--wine); display: block; line-height: 1; }
+  .story .num span { font-size: 14px; color: var(--soft); }
+  .story-img { aspect-ratio: 4/5; background: url(../img/ex/vigneron.jpg) 70% center/cover; }
+
+  .wines { background: #fff; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 40px; }
+  .wine { border: 1px solid var(--line); padding: 28px; background: var(--cream); }
+  .wine .type { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--wine); font-weight: 600; }
+  .wine h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 30px; margin: 8px 0 8px; }
+  .wine p { color: var(--soft); font-size: 15px; margin: 0 0 18px; }
+  .wine .price { font-weight: 600; }
+
+  .visit { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; }
+  .hours { list-style: none; padding: 0; margin: 0; }
+  .hours li { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .hours li span:last-child { color: var(--soft); }
+  .card { background: var(--wine); color: #fff; padding: 36px; }
+  .card h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 32px; margin: 0 0 10px; }
+  .card p { opacity: .9; margin: 0 0 20px; }
+  .card .btn { background: #fff; color: var(--wine); }
+
+  footer { border-top: 1px solid var(--line); padding: 30px 0 40px; font-size: 14px; color: var(--soft); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+  @media (max-width: 780px) {
+    .top nav { display: none; }
+    .brand { letter-spacing: .16em; font-size: 12px; }
+    .story, .visit { grid-template-columns: 1fr; gap: 32px; }
+    .grid { grid-template-columns: 1fr; }
+    .story-img { aspect-ratio: 16/10; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-bar">Site d'exemple créé par Pamela Morganti. L'entreprise et les textes sont inventés. <a href="../#realisations">← Retour au portfolio</a></div>
+
+<header class="hero">
+  <div class="wrap top">
+    <span class="brand">Domaine des Trois Coteaux</span>
+    <nav><a href="#domaine">Le domaine</a><a href="#vins">Nos vins</a><a href="#visite">Visite</a></nav>
+  </div>
+  <div class="wrap hero-copy">
+    <span class="kicker">Vins du Valais · depuis 1962</span>
+    <h1 class="serif">Le goût de nos coteaux.</h1>
+    <p>Une petite cave familiale où l'on cultive la vigne à la main, de la taille aux vendanges.</p>
+    <a class="btn btn-light" href="#vins">Découvrir nos vins</a>
+  </div>
+</header>
+
+<section id="domaine">
+  <div class="wrap story">
+    <div>
+      <h2>Trois générations, une même passion.</h2>
+      <p class="lead">Nos vignes poussent en terrasses, sur des coteaux ensoleillés. Chaque année, nous produisons quelques milliers de bouteilles, en prenant le temps qu'il faut.</p>
+      <p class="lead">Venez nous rendre visite : nous vous ferons goûter nos vins et visiter la cave.</p>
+      <div class="num">
+        <div><b>4</b><span>hectares de vignes</span></div>
+        <div><b>6</b><span>cépages</span></div>
+        <div><b>3</b><span>générations</span></div>
+      </div>
+    </div>
+    <div class="story-img" role="img" aria-label="Les vignes du domaine au coucher du soleil"></div>
+  </div>
+</section>
+
+<section id="vins" class="wines">
+  <div class="wrap">
+    <h2>Nos vins</h2>
+    <p class="lead">Une sélection courte, pour bien faire chaque vin.</p>
+    <div class="grid">
+      <div class="wine"><span class="type">Blanc</span><h3>Fendant</h3><p>Frais et léger, parfait à l'apéritif ou avec une raclette.</p><span class="price">CHF 16.–</span></div>
+      <div class="wine"><span class="type">Rouge</span><h3>Pinot noir</h3><p>Fruité et souple, avec des notes de cerise.</p><span class="price">CHF 21.–</span></div>
+      <div class="wine"><span class="type">Rouge</span><h3>Humagne rouge</h3><p>Un cépage du Valais, épicé, idéal avec la chasse.</p><span class="price">CHF 27.–</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="visite">
+  <div class="wrap visit">
+    <div>
+      <h2>Nous rendre visite</h2>
+      <p class="lead">La cave est ouverte pour la dégustation et la vente directe.</p>
+      <ul class="hours">
+        <li><span>Mardi – vendredi</span><span>14h – 18h30</span></li>
+        <li><span>Samedi</span><span>9h – 12h · 14h – 17h</span></li>
+        <li><span>Dimanche et lundi</span><span>Sur rendez-vous</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Dégustation pour groupes</h3>
+      <p>Anniversaire, sortie d'entreprise, visite entre amis : nous accueillons jusqu'à 20 personnes.</p>
+      <a class="btn" href="#visite">Réserver une dégustation</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Domaine des Trois Coteaux · Valais (adresse fictive)</span>
+    <span>Site d'exemple · <a href="../">Pamela Morganti</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
