@@ -5,105 +5,115 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pamela Morganti | Création de sites web</title>
 <meta name="description" content="Pamela Morganti crée des sites internet simples et clairs pour les entreprises et les indépendants de Sion et du Valais.">
+<meta name="theme-color" content="#F3EFE6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --paper: #F3EFE6;
+    --card: #FBF9F4;
+    --ink: #121110;
+    --ink-soft: #5B5750;
+    --line: rgba(18,17,16,.12);
+    --accent: #FF5A1F;
+  }
   body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter Tight', Arial, Helvetica, sans-serif;
     font-size: 18px;
     line-height: 1.6;
-    color: #1f2933;
-    background: #f7f5f0;
+    color: var(--ink);
+    background: var(--paper);
   }
   .page { max-width: 920px; margin: 0 auto; padding: 0 20px; }
 
   /* En-tête */
   .hero {
-    background: #2a6f63;
-    color: #fff;
+    background: var(--ink);
+    color: var(--paper);
     border-radius: 0 0 28px 28px;
     padding: 56px 32px 48px;
     margin: 0 -20px;
     text-align: center;
   }
-  .hero .name { font-size: 16px; letter-spacing: 2px; text-transform: uppercase; opacity: .85; margin: 0 0 12px; }
-  .hero h1 { font-size: 40px; line-height: 1.2; margin: 0 0 16px; }
-  .hero p { font-size: 20px; margin: 0 auto; max-width: 640px; }
+  .hero .name { font-size: 15px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; opacity: .7; margin: 0 0 12px; }
+  .hero h1 { font-size: 42px; font-weight: 700; line-height: 1.1; letter-spacing: -.02em; margin: 0 0 16px; }
+  .hero p { font-size: 20px; margin: 0 auto; max-width: 640px; opacity: .9; }
   .btn {
     display: inline-block;
     margin-top: 28px;
-    background: #fff;
-    color: #2a6f63;
-    font-weight: bold;
+    background: var(--accent);
+    color: var(--ink);
+    font-weight: 600;
     text-decoration: none;
     padding: 14px 26px;
     border-radius: 999px;
   }
 
-  h2 { font-size: 28px; margin: 56px 0 20px; color: #2a6f63; text-align: center; }
+  h2 { font-size: 30px; font-weight: 700; letter-spacing: -.02em; margin: 56px 0 20px; text-align: center; }
 
   /* Cartes */
   .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .card {
-    background: #fff;
-    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
     padding: 26px;
-    border-top: 6px solid #e0a43a;
-    box-shadow: 0 2px 10px rgba(0,0,0,.06);
   }
-  .card h3 { font-size: 22px; margin: 0 0 10px; }
-  .card p { margin: 0; }
+  .card h3 { font-size: 22px; font-weight: 600; margin: 0 0 10px; }
+  .card p { margin: 0; color: var(--ink-soft); }
 
   /* Étapes */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: s; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .step {
-    background: #fff;
-    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
     padding: 24px;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,.06);
   }
   .step .num {
     display: inline-block;
     width: 44px; height: 44px; line-height: 44px;
     border-radius: 50%;
-    background: #e0a43a;
-    color: #1f2933;
-    font-weight: bold;
+    background: var(--ink);
+    color: var(--paper);
+    font-weight: 700;
     font-size: 20px;
     margin-bottom: 12px;
   }
-  .step p { margin: 0; }
+  .step p { margin: 0; color: var(--ink-soft); }
 
   /* Exemples */
   .examples { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .example { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+  .example { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
   .example img { display: block; width: 100%; height: auto; }
   .example .txt { padding: 18px 20px 22px; }
-  .example h3 { font-size: 20px; margin: 0 0 6px; }
-  .example a { color: #2a6f63; font-weight: bold; text-decoration: none; }
-  .example a:hover { text-decoration: underline; }
-  .note { text-align: center; color: #5b6770; margin: 16px 0 0; font-size: 16px; }
+  .example h3 { font-size: 20px; font-weight: 600; margin: 0 0 6px; }
+  .example a { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; text-decoration-thickness: 2px; }
+  .note { text-align: center; color: var(--ink-soft); margin: 16px 0 0; font-size: 16px; }
 
   /* Contact */
   .contact {
-    background: #2a6f63;
-    color: #fff;
+    background: var(--ink);
+    color: var(--paper);
     border-radius: 24px;
     padding: 36px 28px;
     margin: 56px 0 0;
     text-align: center;
   }
-  .contact h2 { color: #fff; margin: 0 0 12px; }
+  .contact h2 { color: var(--paper); margin: 0 0 12px; }
   .contact p { margin: 6px 0; font-size: 20px; }
-  .contact a { color: #fff; font-weight: bold; }
+  .contact a { color: var(--accent); font-weight: 600; }
 
-  footer { text-align: center; margin: 36px 0 28px; font-size: 15px; color: #5b6770; }
+  footer { text-align: center; margin: 36px 0 28px; font-size: 15px; color: var(--ink-soft); }
 
   @media (max-width: 700px) {
     .cards, .examples { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 30px; }
-    h2 { font-size: 24px; }
+    .hero h1 { font-size: 32px; }
+    h2 { font-size: 26px; }
   }
 </style>
 </head>
