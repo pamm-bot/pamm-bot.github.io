@@ -61,14 +61,14 @@
   .btn {
     display: inline-block;
     margin-top: 36px;
-    background: var(--text);
-    color: var(--accent);
+    background: #EADFCB;
+    color: var(--accent-dark);
     font-weight: 600;
     text-decoration: none;
     padding: 14px 26px;
     border-radius: 6px;
   }
-  .btn:hover { background: #000; }
+  .btn:hover { background: #E0D2B8; }
 
   /* Services */
   .services { background: var(--surface); }
@@ -92,6 +92,8 @@
   .examples { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
   .example { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg); }
   .example img { display: block; width: 100%; height: auto; aspect-ratio: 2 / 1; object-fit: cover; object-position: 50% 65%; }
+  .preview { position: relative; width: 100%; aspect-ratio: 2 / 1; overflow: hidden; background: #fff; }
+  .preview iframe { position: absolute; top: 0; left: 0; width: 1200px; height: 610px; border: 0; transform: scale(.36); transform-origin: 0 0; pointer-events: none; }
   .example .txt { padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
   .example h3 { font-size: 18px; font-weight: 600; }
   .example a { font-weight: 600; text-decoration: none; white-space: nowrap; }
@@ -198,7 +200,7 @@
           </div>
         </div>
         <div class="example">
-          <img src="img/ex/cafe.jpg" alt="Aperçu du site d'exemple d'un bar à café" width="900" height="1350">
+          <div class="preview" aria-label="Aperçu du site d'exemple d'un bar à café"><iframe src="exemples/cafe.html" title="Aperçu du site d'exemple d'un bar à café" tabindex="-1" scrolling="no"></iframe></div>
           <div class="txt">
             <h3>Bar à café</h3>
             <a href="exemples/cafe.html">Voir l'exemple →</a>
