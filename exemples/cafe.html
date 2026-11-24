@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boulangerie Le Petit Pain | Site d'exemple</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --cream: #FBF6EE; --card: #FFFFFF; --brown: #3A2A1E; --soft: #7A6A5C; --accent: #B9722E; --line: rgba(58,42,30,.12); }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', Arial, sans-serif; font-size: 17px; line-height: 1.65; color: var(--brown); background: var(--cream); }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  .demo-bar { background: #3A2A1E; color: #FBF6EE; font-size: 14px; text-align: center; padding: 9px 16px; }
+  .demo-bar a { color: #F2C48D; font-weight: 600; }
+
+  .hero { position: relative; min-height: 70vh; color: #fff; display: flex; flex-direction: column; }
+  .hero::before { content: ""; position: absolute; inset: 0; background: url(../img/ex/cafe.jpg) center 60%/cover; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,20,12,.45), rgba(30,20,12,.15) 30%, rgba(30,20,12,.8)); }
+  .hero > * { position: relative; z-index: 1; }
+  .top { display: flex; justify-content: space-between; align-items: center; padding-top: 22px; padding-bottom: 22px; gap: 16px; flex-wrap: wrap; }
+  .brand { font-weight: 700; font-size: 18px; }
+  .top nav { display: flex; gap: 24px; font-size: 15px; }
+  .top nav a { text-decoration: none; opacity: .92; }
+  .hero-copy { margin-top: auto; padding-bottom: 64px; max-width: 640px; }
+  .hero h1 { font-size: clamp(40px, 6vw, 64px); font-weight: 700; line-height: 1.05; margin: 0 0 16px; letter-spacing: -.02em; }
+  .hero p { font-size: 19px; opacity: .95; margin: 0 0 26px; }
+  .btn { display: inline-block; padding: 13px 24px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 15px; }
+  .btn-light { background: #fff; color: var(--brown); }
+  .btn-accent { background: var(--accent); color: #fff; }
+
+  section { padding: 80px 0; }
+  h2 { font-size: 36px; font-weight: 700; letter-spacing: -.02em; line-height: 1.15; margin: 0 0 14px; }
+  .lead { color: var(--soft); max-width: 620px; margin: 0; }
+
+  .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
+  .item { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 26px 28px; display: flex; justify-content: space-between; gap: 18px; }
+  .item h3 { font-size: 19px; font-weight: 600; margin: 0 0 6px; }
+  .item p { margin: 0; color: var(--soft); font-size: 15px; }
+  .item .price { font-weight: 700; color: var(--accent); white-space: nowrap; }
+
+  .visit { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .hours { list-style: none; padding: 0; margin: 24px 0 0; background: var(--card); border-radius: 18px; border: 1px solid var(--line); }
+  .hours li { display: flex; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid var(--line); }
+  .hours li:last-child { border-bottom: 0; }
+  .hours li span:last-child { color: var(--soft); }
+  .card { background: var(--brown); color: var(--cream); border-radius: 22px; padding: 38px; }
+  .card h3 { font-size: 26px; font-weight: 700; margin: 0 0 12px; }
+  .card p { opacity: .9; margin: 0 0 24px; }
+  .card .btn { background: var(--accent); color: #fff; }
+
+  footer { border-top: 1px solid var(--line); padding: 30px 0 40px; font-size: 14px; color: var(--soft); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+  @media (max-width: 780px) {
+    .top nav { display: none; }
+    .menu-grid, .visit { grid-template-columns: 1fr; }
+    section { padding: 56px 0; }
+    h2 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-bar">Site d'exemple créé par Pamela Morganti : l'entreprise et les textes sont inventés. <a href="../#exemples">← Retour au portfolio</a></div>
+
+<header class="hero">
+  <div class="wrap top">
+    <span class="brand">Boulangerie Le Petit Pain</span>
+    <nav><a href="#menu">Nos produits</a><a href="#horaires">Horaires</a><a href="#contact">Commander</a></nav>
+  </div>
+  <div class="wrap hero-copy">
+    <h1>Du pain frais chaque matin.</h1>
+    <p>Une boulangerie de quartier : pains au levain, viennoiseries et un café pour commencer la journée.</p>
+    <a class="btn btn-light" href="#menu">Voir nos produits</a>
+  </div>
+</header>
+
+<section id="menu">
+  <div class="wrap">
+    <h2>Nos produits</h2>
+    <p class="lead">Fabriqués sur place, tous les jours. Les prix sont indiqués à titre d'exemple.</p>
+    <div class="menu-grid">
+      <div class="item"><div><h3>Pain au levain</h3><p>Cuisson lente, croûte croustillante et mie moelleuse.</p></div><span class="price">CHF 5.50</span></div>
+      <div class="item"><div><h3>Croissant au beurre</h3><p>Feuilleté à la main, doré au four.</p></div><span class="price">CHF 2.80</span></div>
+      <div class="item"><div><h3>Tresse aux raisins</h3><p>Pâte briochée et raisins secs du mois.</p></div><span class="price">CHF 4.20</span></div>
+      <div class="item"><div><h3>Café et petit-déjeuner</h3><p>Un café, un jus et une viennoiserie, à emporter ou sur place.</p></div><span class="price">CHF 6.50</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="horaires" style="padding-top:0">
+  <div class="wrap visit">
+    <div>
+      <h2>Horaires d'ouverture</h2>
+      <p class="lead">Passez quand vous voulez, les pains du jour partent vite.</p>
+      <ul class="hours">
+        <li><span>Lundi – vendredi</span><span>6h30 – 18h30</span></li>
+        <li><span>Samedi</span><span>6h30 – 17h</span></li>
+        <li><span>Dimanche</span><span>7h – 11h</span></li>
+      </ul>
+    </div>
+    <div class="card" id="contact">
+      <h3>Commander un gâteau</h3>
+      <p>Anniversaire, apéritif ou fête de famille : commandez à l'avance, nous préparons votre commande.</p>
+      <a class="btn" href="#contact">Demander un devis</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Boulangerie Le Petit Pain · Sion (adresse fictive)</span>
+    <span>Site d'exemple · <a href="../">Retour au portfolio</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
