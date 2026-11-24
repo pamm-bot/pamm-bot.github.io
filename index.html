@@ -3,56 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pamela Morganti | Développeuse web</title>
-<meta name="description" content="Pamela Morganti, développeuse web à Sion (Valais) : portfolio technique pour les recruteurs et présentation de mes services pour les particuliers et les entreprises.">
+<title>Pamela Morganti | Création de sites web</title>
+<meta name="description" content="Pamela Morganti, développeuse web à Sion (Valais). Création de sites internet et d'applications web. Mes réalisations et mon parcours.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pamela Morganti | Création de sites web">
+<meta property="og:description" content="Développeuse web à Sion (Valais) : mes réalisations et mon parcours.">
+<meta property="og:locale" content="fr_CH">
+<meta property="og:url" content="https://pamm-bot.github.io/">
+<meta property="og:image" content="https://pamm-bot.github.io/img/og.jpg">
+<link rel="canonical" href="https://pamm-bot.github.io/">
 <meta name="theme-color" content="#F3EFE6">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121110'/%3E%3Ctext x='30' y='44' font-family='Arial,sans-serif' font-weight='700' font-size='34' fill='%23F3EFE6' text-anchor='middle'%3Ep%3C/text%3E%3Ccircle cx='46' cy='41' r='4' fill='%23FF5A1F'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121110'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-weight='700' font-size='34' fill='%23F3EFE6' text-anchor='middle'%3Ep%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #F3EFE6; --card: #FBF9F4; --ink: #121110; --ink-soft: #5B5750; --line: rgba(18,17,16,.12);
-    --accent: #FF5A1F; --accent-ink: #1A0A03; --font: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --paper: #F3EFE6;
+    --card: #FBF9F4;
+    --ink: #121110;
+    --soft: #5B5750;
+    --line: rgba(18,17,16,.12);
+    --accent: #D9470F;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) { --paper: #121110; --card: #1A1917; --ink: #F3EFE6; --ink-soft: #A39E94; --line: rgba(243,239,230,.14); }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: 'Inter Tight', system-ui, sans-serif; font-size: 18px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
-  :root[data-theme="dark"] { --paper: #121110; --card: #1A1917; --ink: #F3EFE6; --ink-soft: #A39E94; --line: rgba(243,239,230,.14); }
-  *, *::before, *::after { box-sizing: border-box; }
-  body { margin: 0; min-height: 100vh; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.6; display: flex; flex-direction: column; }
-  a { color: inherit; text-decoration: none; }
-  p, h1 { margin: 0; }
-  .wrap { width: 100%; max-width: 1040px; margin: 0 auto; padding: 0 24px; }
-  header { padding: 18px 0; }
-  header .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-  .logo { font-weight: 700; font-size: 22px; letter-spacing: -.04em; }
-  .logo b { color: var(--accent); }
-  .tools { display: flex; align-items: center; gap: 10px; }
-  .langs { display: flex; gap: 6px; }
-  .langs button { width: 26px; height: 26px; padding: 0; border: 0; border-radius: 50%; overflow: hidden; cursor: pointer; background: none; opacity: .5; box-shadow: 0 0 0 1px var(--line); }
-  .langs button:hover { opacity: .9; }
-  .langs button[aria-pressed="true"] { opacity: 1; box-shadow: 0 0 0 2px var(--paper), 0 0 0 3.5px var(--ink); }
-  .langs svg { width: 100%; height: 100%; display: block; }
-  #theme { background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 999px; padding: 7px 14px; font: inherit; font-size: 14px; cursor: pointer; }
-  main { flex: 1; display: flex; align-items: center; padding: 40px 0 72px; }
-  .intro { max-width: 640px; margin-bottom: 48px; }
-  .eyebrow { font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
-  h1 { font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -.035em; font-weight: 600; margin: 14px 0 16px; }
-  h1 .serif { color: var(--accent); }
-  .intro p { color: var(--ink-soft); font-size: 18px; }
-  .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .choice { display: flex; flex-direction: column; gap: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 32px; transition: border-color .25s, transform .25s; }
-  .choice:hover { border-color: var(--ink); transform: translateY(-2px); }
-  .choice .n { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); display: grid; place-items: center; font-weight: 700; }
-  .choice h2 { margin: 6px 0 0; font-size: 24px; letter-spacing: -.02em; font-weight: 600; }
-  .choice p { color: var(--ink-soft); }
-  .choice .go { margin-top: auto; font-weight: 600; padding-top: 12px; border-top: 1px solid var(--line); }
-  .choice:hover .go { color: var(--accent); }
-  footer { padding: 24px 0; font-size: 14px; color: var(--ink-soft); }
-  @media (max-width: 680px) {
-    .choices { grid-template-columns: 1fr; }
-    .intro p { font-size: 17px; }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+  header { border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; height: 68px; }
+  .name { font-weight: 700; text-decoration: none; font-size: 18px; }
+  header nav { display: flex; gap: 24px; font-size: 16px; }
+  header nav a { text-decoration: none; color: var(--soft); }
+  header nav a:hover { color: var(--ink); }
+
+  section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: 0; }
+  h1 { font-size: clamp(34px, 5vw, 48px); line-height: 1.1; letter-spacing: -.02em; margin: 0 0 20px; }
+  h2 { font-size: 28px; letter-spacing: -.01em; margin: 0 0 8px; }
+  h3 { font-size: 22px; margin: 0 0 6px; }
+  .intro-text { color: var(--soft); margin: 0 0 32px; }
+  p { margin: 0 0 14px; }
+
+  /* Présentation */
+  .hello { display: grid; grid-template-columns: 220px 1fr; gap: 48px; align-items: center; }
+  .hello img { border-radius: 16px; aspect-ratio: 4/5; object-fit: cover; width: 220px; height: auto; }
+  .hello p { color: var(--soft); }
+  .hello strong { color: var(--ink); font-weight: 600; }
+
+  .btn {
+    display: inline-block; padding: 12px 22px; border-radius: 999px; text-decoration: none;
+    background: var(--ink); color: var(--paper); font-weight: 600; font-size: 16px; margin-top: 8px;
+  }
+  .btn:hover { background: var(--accent); }
+
+  /* Ce que je fais */
+  .offer { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .offer div { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+  .offer h3 { font-size: 19px; }
+  .offer p { color: var(--soft); font-size: 16px; margin: 0; }
+
+  /* Réalisations */
+  .project { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; padding: 32px 0; border-top: 1px solid var(--line); }
+  .project:first-of-type { border-top: 0; padding-top: 8px; }
+  .shot { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--card); }
+  .shot img { width: 100%; aspect-ratio: 2/1; object-fit: cover; object-position: top; }
+  .project p { color: var(--soft); }
+  .kind { font-size: 14px; font-weight: 600; color: var(--accent); margin-bottom: 4px; display: block; }
+  .demo { font-size: 15px; }
+  .links { display: flex; gap: 20px; flex-wrap: wrap; font-weight: 600; font-size: 16px; }
+  .links a { text-decoration: underline; text-underline-offset: 4px; }
+  .links a.secondary { font-weight: 400; color: var(--soft); }
+  .note { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; font-size: 16px; color: var(--soft); margin-top: 8px; }
+
+  /* Parcours */
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .timeline li { display: grid; grid-template-columns: 140px 1fr; gap: 24px; padding: 18px 0; border-top: 1px solid var(--line); }
+  .timeline li:first-child { border-top: 0; }
+  .timeline .when { font-weight: 600; }
+  .timeline p { color: var(--soft); margin: 4px 0 0; }
+
+  details { margin-top: 28px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; font-size: 16px; }
+  summary { cursor: pointer; font-weight: 600; }
+  details ul { margin: 12px 0 0; padding-left: 20px; color: var(--soft); }
+
+  /* Contact */
+  .contact-list { list-style: none; padding: 0; margin: 20px 0 0; }
+  .contact-list li { padding: 10px 0; border-top: 1px solid var(--line); display: flex; gap: 16px; }
+  .contact-list li:first-child { border-top: 0; }
+  .contact-list span { width: 110px; color: var(--soft); flex-shrink: 0; }
+
+  footer { padding: 32px 0 48px; color: var(--soft); font-size: 14px; }
+
+  @media (max-width: 760px) {
+    header nav { gap: 16px; font-size: 15px; }
+    header nav .opt { display: none; }
+    .hello { grid-template-columns: 1fr; gap: 24px; }
+    .hello img { width: 160px; }
+    .offer { grid-template-columns: 1fr; }
+    .project { grid-template-columns: 1fr; gap: 18px; }
+    .timeline li { grid-template-columns: 1fr; gap: 0; }
   }
 </style>
 </head>
@@ -60,81 +117,185 @@
 
 <header>
   <div class="wrap">
-    <span class="logo">pm<b>.</b></span>
-    <div class="tools">
-      <div class="langs" role="group" aria-label="Langue">
-        <button type="button" data-lang="fr" aria-label="Français" aria-pressed="true"><svg viewBox="0 0 30 30" aria-hidden="true"><rect width="10" height="30" fill="#0055A4"/><rect x="10" width="10" height="30" fill="#fff"/><rect x="20" width="10" height="30" fill="#EF4135"/></svg></button>
-        <button type="button" data-lang="it" aria-label="Italiano" aria-pressed="false"><svg viewBox="0 0 30 30" aria-hidden="true"><rect width="10" height="30" fill="#009246"/><rect x="10" width="10" height="30" fill="#fff"/><rect x="20" width="10" height="30" fill="#CE2B37"/></svg></button>
-        <button type="button" data-lang="en" aria-label="English" aria-pressed="false"><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><clipPath id="uk-c"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#uk-c)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg></button>
-      </div>
-      <button id="theme" type="button" data-i18n="theme">Thème</button>
-    </div>
+    <a class="name" href="#">Pamela Morganti</a>
+    <nav>
+      <a href="#realisations">Réalisations</a>
+      <a class="opt" href="#parcours">Parcours</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
 </header>
 
 <main>
-  <div class="wrap">
-    <div class="intro">
-      <p class="eyebrow" data-i18n="eyebrow">Pamela Morganti · Sion, Valais</p>
-      <h1 data-i18n="h1">Développeuse web, <span class="serif">pour vous.</span></h1>
-      <p data-i18n="lead">Choisissez ce qui vous correspond : vous recrutez, ou vous avez un projet pour votre activité.</p>
-    </div>
 
-    <div class="choices">
-      <a class="choice" href="recruteurs.html">
-        <span class="n">1</span>
-        <h2 data-i18n="c1.h">Je recrute</h2>
-        <p data-i18n="c1.p">Portfolio technique : projets, technologies, étude de cas, parcours et CV à télécharger.</p>
-        <span class="go" data-i18n="c1.go">Voir le portfolio technique →</span>
-      </a>
-      <a class="choice" href="presentation.html">
-        <span class="n">2</span>
-        <h2 data-i18n="c2.h">J'ai un projet</h2>
-        <p data-i18n="c2.p">Un site internet ou un petit outil en ligne pour votre entreprise ou votre activité, expliqués simplement.</p>
-        <span class="go" data-i18n="c2.go">Voir comment je peux vous aider →</span>
-      </a>
+  <!-- Présentation -->
+  <section>
+    <div class="wrap hello">
+      <img src="img/pamela.jpg" alt="Photo de Pamela Morganti" width="800" height="1200">
+      <div>
+        <h1>Je crée des sites internet.</h1>
+        <p>Je m'appelle <strong>Pamela Morganti</strong>, j'habite en Valais. Je suis <strong>développeuse web</strong> : je fabrique des sites internet et, quand c'est utile, de petites applications que l'on utilise directement dans le navigateur.</p>
+        <p>Sur cette page, vous trouverez ce que j'ai déjà réalisé (vous pouvez tout essayer) et mon parcours.</p>
+        <a class="btn" href="#realisations">Voir mes réalisations</a>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Ce que je fais -->
+  <section>
+    <div class="wrap">
+      <h2>Ce que je fais</h2>
+      <p class="intro-text">En quelques mots.</p>
+      <div class="offer">
+        <div>
+          <h3>Sites internet</h3>
+          <p>Le site qui présente une entreprise ou une personne : qui elle est, ce qu'elle propose, comment la contacter. Il s'affiche bien sur ordinateur et sur téléphone.</p>
+        </div>
+        <div>
+          <h3>Boutiques en ligne</h3>
+          <p>Un site où les clients peuvent voir les produits et les acheter directement.</p>
+        </div>
+        <div>
+          <h3>Applications web</h3>
+          <p>Un outil en ligne fait sur mesure : par exemple réserver un rendez-vous, suivre des dépenses ou retrouver ses informations dans un espace personnel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Réalisations -->
+  <section id="realisations">
+    <div class="wrap">
+      <h2>Mes réalisations</h2>
+      <p class="intro-text">Quatre applications que j'ai construites et mises en ligne. Elles fonctionnent : cliquez sur « Voir le site » pour les essayer.</p>
+
+      <article class="project">
+        <a class="shot" href="https://eat-healthy-pam-a5a77d152949.herokuapp.com/" target="_blank" rel="noopener"><img src="img/eathealthy.jpg" alt="Capture d'écran de Eat Healthy" ></a>
+        <div>
+          <span class="kind">Application web · projet personnel</span>
+          <h3>Eat Healthy</h3>
+          <p>On note ce que l'on mange et le site montre, sur la semaine, si l'on mange de façon équilibrée.</p>
+          <p class="demo">Pour essayer : identifiant <b>demo</b>, mot de passe <b>demo12345</b></p>
+          <div class="links"><a href="https://eat-healthy-pam-a5a77d152949.herokuapp.com/" target="_blank" rel="noopener">Voir le site ↗</a></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a class="shot" href="https://rails-watch-list-pam-ed2b83622ee0.herokuapp.com/locale/fr" target="_blank" rel="noopener"><img src="img/watchlist.jpg" alt="Capture d'écran de My Watch List" ></a>
+        <div>
+          <span class="kind">Application web · projet personnel</span>
+          <h3>My Watch List</h3>
+          <p>Pour faire des listes de films à voir, leur donner une note et écrire un avis. Le site existe en français, italien et anglais.</p>
+          <p class="demo">Pour essayer : identifiant <b>demo@watchlist.dev</b>, mot de passe <b>moviebuff</b></p>
+          <div class="links"><a href="https://rails-watch-list-pam-ed2b83622ee0.herokuapp.com/locale/fr" target="_blank" rel="noopener">Voir le site ↗</a></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a class="shot" href="https://split-expenses-pam-05e9be4c8938.herokuapp.com/" target="_blank" rel="noopener"><img src="img/split.jpg" alt="Capture d'écran de Split Expenses" ></a>
+        <div>
+          <span class="kind">Application web · projet personnel</span>
+          <h3>Split Expenses</h3>
+          <p>Pour partager les dépenses d'un voyage entre amis : on note qui a payé quoi, et le site calcule qui doit combien à qui.</p>
+          <p class="demo">Pour essayer : identifiant <b>demo</b>, mot de passe <b>demo12345</b> (site en anglais)</p>
+          <div class="links"><a href="https://split-expenses-pam-05e9be4c8938.herokuapp.com/" target="_blank" rel="noopener">Voir le site ↗</a></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a class="shot" href="https://cook-mind-606d5c57cefd.herokuapp.com/" target="_blank" rel="noopener"><img src="img/cookmind.jpg" alt="Capture d'écran de Cook Mind" ></a>
+        <div>
+          <span class="kind">Application web · projet d'équipe (formation Le Wagon)</span>
+          <h3>Cook Mind</h3>
+          <p>On indique ce qu'il y a dans son frigo, et un assistant d'intelligence artificielle propose des recettes. J'ai réalisé la partie conversation avec l'assistant.</p>
+          <p class="demo">Site en anglais</p>
+          <div class="links"><a href="https://cook-mind-606d5c57cefd.herokuapp.com/" target="_blank" rel="noopener">Voir le site ↗</a></div>
+        </div>
+      </article>
+
+      <p class="note">Ces projets ont été réalisés pendant et après ma formation. Les sites peuvent mettre quelques secondes à s'ouvrir la première fois : c'est normal, ils sont hébergés sur un service gratuit.</p>
+    </div>
+  </section>
+
+  <!-- Exemples -->
+  <section id="exemples">
+    <div class="wrap">
+      <h2>Exemples de sites</h2>
+      <p class="intro-text">Deux exemples pour montrer à quoi peut ressembler le site d'une petite entreprise. Les entreprises et les textes sont inventés.</p>
+
+      <article class="project">
+        <a class="shot" href="exemples/cave.html"><img src="img/ex-cave.jpg" alt="Capture d'écran du site d'une cave à vin"></a>
+        <div>
+          <span class="kind">Exemple</span>
+          <h3>Site d'une cave à vin</h3>
+          <p>Le site d'un petit domaine viticole : la présentation de la famille, les vins avec leurs prix, les horaires de la cave et la réservation de dégustations.</p>
+                    <div class="links"><a href="exemples/cave.html">Voir le site →</a></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a class="shot" href="exemples/menuiserie.html"><img src="img/ex-menuiserie.jpg" alt="Capture d'écran du site d'une menuiserie"></a>
+        <div>
+          <span class="kind">Exemple</span>
+          <h3>Site d'une menuiserie</h3>
+          <p>Le site d'un artisan : ce qu'il fabrique, comment se passe un projet, du premier rendez-vous à la pose, et comment le contacter.</p>
+                    <div class="links"><a href="exemples/menuiserie.html">Voir le site →</a></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Parcours -->
+  <section id="parcours">
+    <div class="wrap">
+      <h2>Mon parcours</h2>
+      <p class="intro-text">Une reconversion choisie.</p>
+      <ul class="timeline">
+        <li>
+          <div class="when">2026</div>
+          <div><b>Formation en développement web et intelligence artificielle</b><p>Le Wagon, « AI Software Development Bootcamp », certificat obtenu en août 2026. J'apprenais déjà la programmation seule avant la formation.</p></div>
+        </li>
+        <li>
+          <div class="when">Avant</div>
+          <div><b>4 ans en salle blanche, horlogerie</b><p>Mimotec SA : fabrication de micro-pièces de montres. Un travail où tout doit être précis, que j'applique aujourd'hui à la création de sites.</p></div>
+        </li>
+        <li>
+          <div class="when">Langues</div>
+          <div><b>Italien, français, anglais</b><p>Italien langue maternelle, français courant à l'écrit et à l'oral, anglais bon niveau.</p></div>
+        </li>
+      </ul>
+
+      <details>
+        <summary>Détails techniques (pour les informaticiens)</summary>
+        <ul>
+          <li>Langages et outils : Ruby on Rails, Python (Django, Django REST Framework), JavaScript, HTML, CSS, PostgreSQL</li>
+          <li>Intelligence artificielle : intégration de modèles de langage (LLM) dans une application</li>
+          <li>Qualité : tests automatisés, GitHub Actions, mise en ligne sur Heroku</li>
+          <li>Code source de tous les projets : <a href="https://github.com/pamm-bot" target="_blank" rel="noopener">github.com/pamm-bot</a></li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li><span>E-mail</span><a href="mailto:Pahelemoba@gmail.com">pahelemoba@gmail.com</a></li>
+        <li><span>Téléphone</span><a href="tel:+41786939926">078 693 99 26</a></li>
+        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/pamela-morganti-9402b83bb" target="_blank" rel="noopener">Mon profil LinkedIn</a></li>
+        <li><span>Lieu</span>Sion (Valais)</li>
+      </ul>
+    </div>
+  </section>
+
 </main>
 
 <footer>
-  <div class="wrap">© <span id="year"></span> Pamela Morganti · Sion, Valais</div>
+  <div class="wrap">© 2026 Pamela Morganti</div>
 </footer>
 
-<script>
-  const I18N = {
-    fr: { theme: `Thème`, eyebrow: `Pamela Morganti · Sion, Valais`, h1: `Développeuse web, <span class="serif">pour vous.</span>`, lead: `Choisissez ce qui vous correspond : vous recrutez, ou vous avez un projet pour votre activité.`, 'c1.h': `Je recrute`, 'c1.p': `Portfolio technique : projets, technologies, étude de cas, parcours et CV à télécharger.`, 'c1.go': `Voir le portfolio technique →`, 'c2.h': `J'ai un projet`, 'c2.p': `Un site internet ou un petit outil en ligne pour votre entreprise ou votre activité, expliqués simplement.`, 'c2.go': `Voir comment je peux vous aider →` },
-    it: { theme: `Tema`, eyebrow: `Pamela Morganti · Sion, Vallese`, h1: `Sviluppatrice web, <span class="serif">per voi.</span>`, lead: `Scegliete ciò che fa per voi: state cercando personale, oppure avete un progetto per la vostra attività.`, 'c1.h': `Cerco personale`, 'c1.p': `Portfolio tecnico: progetti, tecnologie, caso di studio, percorso e CV da scaricare.`, 'c1.go': `Vedi il portfolio tecnico →`, 'c2.h': `Ho un progetto`, 'c2.p': `Un sito internet o un piccolo strumento online per la vostra azienda o attività, spiegati in modo semplice.`, 'c2.go': `Vedi come posso aiutarvi →` },
-    en: { theme: `Theme`, eyebrow: `Pamela Morganti · Sion, Valais`, h1: `Web developer, <span class="serif">for you.</span>`, lead: `Choose what fits you: you are hiring, or you have a project for your business.`, 'c1.h': `I am hiring`, 'c1.p': `Technical portfolio: projects, technologies, case study, background and downloadable CV.`, 'c1.go': `See the technical portfolio →`, 'c2.h': `I have a project`, 'c2.p': `A website or a small online tool for your business, explained simply.`, 'c2.go': `See how I can help →` }
-  };
-  let lang = 'fr';
-  function pickLang() {
-    const q = new URLSearchParams(location.search).get('lang');
-    let saved = null;
-    try { saved = localStorage.getItem('lang'); } catch (e) {}
-    const browser = (navigator.languages || [navigator.language || 'fr']).map(l => l.slice(0, 2).toLowerCase());
-    return [q, saved, ...browser].find(l => l && I18N[l]) || 'fr';
-  }
-  function setLang(next, save = true) {
-    lang = I18N[next] ? next : 'fr';
-    document.documentElement.lang = lang;
-    document.title = lang === 'fr' ? 'Pamela Morganti | Développeuse web' : (lang === 'it' ? 'Pamela Morganti | Sviluppatrice web' : 'Pamela Morganti | Web developer');
-    document.querySelectorAll('[data-i18n]').forEach(el => { el.innerHTML = I18N[lang][el.dataset.i18n] || I18N.fr[el.dataset.i18n]; });
-    document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
-    if (save) { try { localStorage.setItem('lang', lang); } catch (e) {} }
-  }
-  document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
-
-  const root = document.documentElement;
-  try { const saved = localStorage.getItem('theme'); if (saved) root.dataset.theme = saved; } catch (e) {}
-  document.getElementById('theme').addEventListener('click', () => {
-    const dark = root.dataset.theme === 'dark' || (!root.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
-    root.dataset.theme = dark ? 'light' : 'dark';
-    try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
-  });
-
-  document.getElementById('year').textContent = new Date().getFullYear();
-  setLang(pickLang(), false);
-</script>
 </body>
 </html>
